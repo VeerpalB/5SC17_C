@@ -1,0 +1,14 @@
+{%extends 'main.html'%}
+
+{% block content%}
+<div>
+<h1> New Home Page</h1>    
+{% for item in testdata %}
+</div>
+<h5>{{item.id}} --- {{item.name}}</h5>
+<div>
+{% endfor %}
+</div>
+
+
+{% endblock content %}
