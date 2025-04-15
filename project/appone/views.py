@@ -14,3 +14,18 @@ testdata = [
 
 def home(request):
     return render(request, 'appone/home.html',{'testdata':testdata})
+
+def blist(request,id):
+      listitem = None
+
+      for i in testdata:
+           
+           if i ['id'] == int(id):
+                listitem = i
+                
+                context = {'listitem':listitem}
+      return render(request, 'appone/blist.html', context)
+
+
+def navbar(request):
+      return render(request, 'appone/navbar.html')

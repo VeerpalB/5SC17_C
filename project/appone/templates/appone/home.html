@@ -5,10 +5,10 @@
 <h1> New Home Page</h1>    
 {% for item in testdata %}
 </div>
-<h5>{{item.id}} --- {{item.name}}</h5>
-<div>
-{% endfor %}
-</div>
 
+<div>
+    <h5>{{item.id}} -- <a href="{% url 'blist_name' item.id%}">{{item.name}}</a></h5>
+</div>
+{% endfor %}
 
 {% endblock content %}
