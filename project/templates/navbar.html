@@ -1,9 +1,37 @@
 
 
 <div>
+   <html>
+      <head>
 
    {% load static%}
-   <img src="{% static 'appone/Sky_Logo.png' %}" alt="Sky" width="80" height="50">
+   <img src="{% static 'Healthcheck/Sky_Logo.png' %}" alt="Sky" width="80" height="50">
+   
+      </head>
+<body>
+
 </div>
 
-<hr>
+<div class="topnav">
+   <a href="/user">Home</a> |
+   <a href="/profile">Profile</a> |
+   <a href="/progress">Progress</a> |
+   <a href="/logout">Logout</a>
+ </div>
+
+   
+   </ul>
+   {% block content %}
+   {% endblock %}
+    
+</div>
+
+
+
+
+
+ 
+
+</body>
+   </html>
+

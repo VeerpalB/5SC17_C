@@ -1,0 +1,30 @@
+body {
+  margin:0;
+  font: 600 18px 'Inter', sans-serif;
+  letter-spacing: 0.64px;
+  color: #808080;
+}
+.topnav {
+  background-color:#53586a;
+  color:#ffffff;
+  padding:10px;
+  text-align:center;
+}
+.topnav a:link, .topnav a:visited {
+  text-decoration: none;
+  color: #ffffff; 
+}
+.topnav a:hover, .topnav a:active {
+  text-decoration: underline;
+}
+
+
+.main, .main h1 {
+  text-align:center;
+  color:#4b5061;
+}
+
+
+
+
+
