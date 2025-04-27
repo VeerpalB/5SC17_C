@@ -14,7 +14,6 @@ urlpatterns = [
     path('login/', views.login, name='login_name')
 
 
-
     path('navbar/', views.navbar),
   
 ]
