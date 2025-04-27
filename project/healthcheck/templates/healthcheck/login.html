@@ -1,0 +1,19 @@
+{% extends "main.html" %}
+
+{% block content1 %}
+<div>
+<form method="POST">
+{% csrf_token %}
+<fieldset>
+<legend>Log In</legend>
+{{ form.as_p }}
+<button type="submit">Login</button>
+</fieldset>
+</form>
+<div>
+<small>
+Don't have an account? <a href="{% url 'sign_up' %}">Sign Up Now</a>
+</small>
+</div>
+</div>
+{% endblock content1 %}

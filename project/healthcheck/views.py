@@ -22,6 +22,9 @@ def logout(request):
 def voting(request):
     return render(request, 'healthcheck/voting.html')
 
+def login(request):
+    return render(request, "healthcheck/login.html")
+
 
 
 
