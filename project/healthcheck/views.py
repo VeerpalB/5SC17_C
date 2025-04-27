@@ -13,8 +13,15 @@ def profile(request):
 def progress(request):
     return render(request, 'healthcheck/progress.html')
 
+def help(request):
+    return render(request, 'healthcheck/help.html')
+
 def logout(request):
     return render(request, 'healthcheck/logout.html')
+
+def voting(request):
+    return render(request, 'healthcheck/voting.html')
+
 
 
 

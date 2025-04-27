@@ -1,11 +1,10 @@
-
-
 <div>
    <html>
       <head>
-
+         
    {% load static%}
-   <img src="{% static 'Healthcheck/Sky_Logo.png' %}" alt="Sky" width="80" height="50">
+
+   <img class="sky-img" src="{% static 'healthcheck/Sky_Logo.png' %}" alt="Sky" >
    
       </head>
 <body>
@@ -13,25 +12,21 @@
 </div>
 
 <div class="topnav">
-   <a href="/user">Home</a> |
-   <a href="/profile">Profile</a> |
-   <a href="/progress">Progress</a> |
+   <a href="/user">Home</a>               
+   <a href="/profile">Profile</a>          
+   <a href="/progress">Progress</a>               
+   <a href="/help">Help</a>
    <a href="/logout">Logout</a>
- </div>
 
+   </div>
+ </div>
+<a class="sky-img" href="http://127.0.0.1:8000/user"></a>
    
    </ul>
    {% block content %}
    {% endblock %}
-    
+
 </div>
-
-
-
-
-
- 
-
 </body>
    </html>
 
