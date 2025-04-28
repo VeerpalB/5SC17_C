@@ -13,6 +13,7 @@ urlpatterns = [
     path('voting', views.voting, name='voting_name'),
     path('login/', views.login, name='login'),
     path('signup/', views.signup, name='signup'),
+    path('forgottenpassword/', views.forgottenpassword, name='forgottenpassword'),
 
 
     path('navbar/', views.navbar),
