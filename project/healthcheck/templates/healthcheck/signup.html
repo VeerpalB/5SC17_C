@@ -1,9 +1,9 @@
 {%extends 'main.html'%}
 
-{%block content1%}
+{%block content%}
 <div>
 
-<img src="../static/healthcheck/Sky_Logo.png" alt="SkyLogo" width="300" height="200">
+
 <h1>Sign Up</h1>
 </div>
 <div>
@@ -37,7 +37,7 @@
 </form>
 <div>
 <small>Have an account?</small>
-<a href="#">Log In</a>
+<a href="{% url 'login' %}">Log In</a>
 </div>
 </div>
-{%endblock content1%} 
+{%endblock content%} 

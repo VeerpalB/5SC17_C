@@ -1,9 +1,9 @@
 {% extends "main.html" %}
 
-{% block content1 %}
+{% block content %}
 <div>
 
-<img src="../static/healthcheck/Sky_Logo.png" alt="SkyLogo" width="300" height="200">
+
 <form method="POST">
 {% csrf_token %}
 <fieldset>
@@ -25,4 +25,4 @@ Don't have an account? <a href="{% url 'signup' %}">Sign Up Now</a>
 </small>
 </div>
 </div>
-{% endblock content1 %}
+{% endblock content %}
