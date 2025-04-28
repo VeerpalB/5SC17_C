@@ -34,3 +34,6 @@ def signup(request):
 def navbar(request):
       return render(request, 'healthcheck/navbar.html')
 
+
+def welcome_page(request): #Nadia's task
+    return render(request, 'healthcheck/welcome.html')

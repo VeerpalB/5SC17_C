@@ -16,5 +16,6 @@ urlpatterns = [
 
 
     path('navbar/', views.navbar),
+    path('welcome/', views.welcome_page, name='welcome'), #Nadia
   
 ]
