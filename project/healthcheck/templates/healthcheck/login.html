@@ -2,7 +2,7 @@
 
 {% block content1 %}
 <div>
-<link rel="stylesheet" href="../static/healthcheck/style.css">
+<link rel="stylesheet" href="{% static 'style.css' %}">
 <img src="../static/healthcheck/Sky_Logo.png" alt="SkyLogo" width="300" height="200">
 <form method="POST">
 {% csrf_token %}
