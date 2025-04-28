@@ -1,0 +1,43 @@
+{%extends 'main.html'%}
+
+{%block content1%}
+<div>
+<link rel="stylesheet" href="../static/healthcheck/style.css">
+<img src="../static/healthcheck/Sky_Logo.png" alt="SkyLogo" width="300" height="200">
+<h1>Sign Up</h1>
+</div>
+<div>
+<form method = "POST">
+{% csrf_token %}
+<fieldset>
+<legend>Sign Up</legend>
+<label for="fname">Enter Your First Name:</label><br>
+<input type="text" id="fname" name="fname"><br>
+<label for="sname">Enter Your Surname:</label><br>
+<input type="text" id="sname" name="sname"><br>
+<label for="email">Enter Your Email:</label><br>
+<input type="email" id="email" name="email"><br>
+<label for="username">Enter Your Username:</label><br>
+<input type="text" id="username" name="username"><br>
+<label for="pwd">Enter Your Password:</label><br>
+<input type="password" id="pwd" name="pwd">
+</fieldset>
+<div>
+
+<label for="roles">Select your role:</label>
+<select id="roles" name="roles">
+<option value="engineer">Engineer</option>
+<option value="teamleader">Team Leader</option>
+<option value="departmentleader">Department Leader</option>
+<option value="seniormanager">Senior Manager</option>
+<option value="admin">Admin</option>
+</select>
+<button type="submit">Sign up</button>
+</div>
+</form>
+<div>
+<small>Have an account?</small>
+<a href="#">Log In</a>
+</div>
+</div>
+{%endblock content1%} 

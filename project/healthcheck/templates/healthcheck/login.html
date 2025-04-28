@@ -1,0 +1,28 @@
+{% extends "main.html" %}
+
+{% block content1 %}
+<div>
+<link rel="stylesheet" href="../static/healthcheck/style.css">
+<img src="../static/healthcheck/Sky_Logo.png" alt="SkyLogo" width="300" height="200">
+<form method="POST">
+{% csrf_token %}
+<fieldset>
+<legend>Log In</legend>
+<label for="username">Enter Your Username:</label><br>
+<input type="text" id="username" name="username"><br>
+<label for="pwd">Enter Your Password:</label><br>
+<input type="password" id="pwd" name="pwd">
+
+<button type="submit">Log in</button>
+</fieldset>
+</form>
+<div>
+<small>
+<a href="{% url 'forgottenpassword' %}">Forgotten your password? </a>
+
+
+Don't have an account? <a href="{% url 'signup' %}">Sign Up Now</a>
+</small>
+</div>
+</div>
+{% endblock content1 %}

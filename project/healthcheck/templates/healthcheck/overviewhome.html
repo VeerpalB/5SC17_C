@@ -1,0 +1,31 @@
+{% extends 'overview/main.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="overview-container">
+    <h2 class="overview-heading">Welcome to the Health Check System</h2>
+    <p class="overview-description">
+        Designed to help teams and departments track progress and maintain high standards.
+        This platform is built for you to view the overall results for all teams or departments from any sessions taken.
+    </p>
+
+    <div class="card-container">
+        <a href="{% url 'overview:department' %}" class="card-link">
+            <div class="overview-card">
+                <h5>Department Overview</h5>
+                <p>Find out about department trends and emerging challenges which help improve decision making.</p>
+            </div>
+        </a>
+
+        <a href="{% url 'overview:team' %}" class="card-link">
+            <div class="overview-card">
+                <h5>Team Overview</h5>
+                <p>Find out about team trends, help improve efficiency, drive and innovation.</p>
+            </div>
+        </a>
+    </div>
+</div>
+{% endblock %}
+
