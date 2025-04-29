@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+<div class ="team">
+
+    <p>
+    Welcome to the department overview brief.Here youll find valuable resources,key information and updates.
+    Dive in to learn about our goals,processes,and how we work together to achieve success!
+</p>
+
+<form method = "post">
+    {% csrf_token %}
+   <label for="team">Select the team you are wanting to view: </label>
+   <select id="team" name="team">
+      <option value ="T1">T1</option>
+      <option value ="T2">T2</option>
+      <option value ="T3">T3</option>
+      <option value ="T4">T4</option>
+      <option value ="T5">T5</option>
+      <option value ="T6">T6</option>
+        </select>
+        
+    </form>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="card">Select the cards you want to view:</label>
+         <select id=""team name="team">
+         <option value ="How this works?">How this works</option>
+         <option value ="Delivering value">Delivering value</option>
+         <option value ="Easy to release">Easy to release</option>
+         <option value ="Fun">Fun</option>
+         <option value ="Learning">Learning</option>
+         <option value ="Mission">Mission</option>
+         <option value ="Pawns or Players">Pawns or Players</option>
+         <option value ="Suitable process">Suitable Process</option>
+         <option value ="Support">Support</option>
+         <option value ="Teamwork">Teamwork</option>
+         <option value ="Health of codebase">Health of codebase</option>
+    </select>
+    </form>
+    
+</div>
+{% endblock content %}

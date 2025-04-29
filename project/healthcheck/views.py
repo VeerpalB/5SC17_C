@@ -64,16 +64,15 @@ def login(request):
         username = request.POST['username']
         password = request.POST['pwd']
         user = authenticate(request, username=username, password=password)
+        
         if user is not None:
-            auth_login(request, user)
-            messages.success(request, f'Welcome back, {username}!')
-            return redirect('healthcheck_home')
-        else:
-            messages.error(request, 'Invalid username or password.')
-
-    return render(request, 'healthcheck/login.html')
 
 
+
+
+
+
+    return render(request, "healthcheck/login.html")
     
     
 
