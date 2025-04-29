@@ -1,28 +1,104 @@
-{% extends "main.html" %}
+{% load static %}
+{% block content %}
 
-{% block content1 %}
-<div>
-<link rel="stylesheet" href="{% static 'style.css' %}">
-<img src="../static/healthcheck/Sky_Logo.png" alt="SkyLogo" width="300" height="200">
-<form method="POST">
-{% csrf_token %}
-<fieldset>
-<legend>Log In</legend>
-<label for="username">Enter Your Username:</label><br>
-<input type="text" id="username" name="username"><br>
-<label for="pwd">Enter Your Password:</label><br>
-<input type="password" id="pwd" name="pwd">
+<style>
+    body {
+        background-color: #ffffff;
+        font-family: 'Inter', sans-serif;
+        letter-spacing: 0.64px;
+        font-weight: 300;
+        font-size: 18px;
+        margin: 0;
+        padding: 0;
+    }
 
-<button type="submit">Log in</button>
-</fieldset>
-</form>
-<div>
-<small>
-<a href="{% url 'forgottenpassword' %}">Forgotten your password? </a>
+    .container {
+        max-width: 400px;
+        margin: 80px auto;
+        text-align: center;
+    }
 
+    .logo {
+        margin-bottom: 20px;
+    }
 
-Don't have an account? <a href="{% url 'signup' %}">Sign Up Now</a>
-</small>
+    .logo img {
+        width: 120px;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        padding: 12px 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    button[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    small {
+        display: block;
+        margin-top: 20px;
+        font-size: 14px;
+    }
+
+    small a {
+        color: #00aaff;
+        text-decoration: none;
+    }
+
+    small a:hover {
+        text-decoration: underline;
+    }
+
+</style>
+
+<div class="container">
+
+    <div class="logo">
+        <img src="project\healthcheck\static\healthcheck\Sky_Logo.png" alt="Sky Logo">
+    </div>
+
+    <h2>LOG IN</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <input type="text" id="username" name="username" placeholder="Enter Your Username">
+        <input type="password" id="pwd" name="pwd" placeholder="Enter Your Password">
+
+        <button type="submit">Log In</button>
+    </form>
+
+    <small>
+        <a href="{% url 'forgotten_password' %}">Forgotten your password?</a><br><br>
+        Don't have an account? <a href="{% url 'signup' %}">Sign up</a>
+    </small>
 </div>
-</div>
-{% endblock content1 %}
+{% endblock content %}
