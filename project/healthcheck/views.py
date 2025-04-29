@@ -23,6 +23,7 @@ def logout(request):
 def voting(request):
     return render(request, 'healthcheck/voting.html')
 
+
 def session(request):
     
     
@@ -31,6 +32,17 @@ def session(request):
 def dashboard(request):
     return render(request, 'healthcheck/dashboard.html')
 
+def login(request):
+    return render(request, "healthcheck/login.html")
+
+def signup(request):
+    return render(request, "healthcheck/signup.html")
+
+def forgotten_password(request):
+    return render(request, 'healthcheck/forgotten_password.html')
+
+def forgotten_password_confirmation(request):
+    return render(request, 'healthcheck/forgotten_password_confirmation.html')
 
 def navbar(request):
       return render(request, 'healthcheck/navbar.html')
