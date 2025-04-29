@@ -28,9 +28,11 @@ def login(request):
 def signup(request):
     return render(request, "healthcheck/signup.html")
 
-def forgottenpassword(request):
-    return render(request, 'healthcheck/forgottenpassword.html')
+def forgotten_password(request):
+    return render(request, 'healthcheck/forgotten_password.html')
 
+def forgotten_password_confirmation(request):
+    return render(request, 'healthcheck/forgotten_password_confirmation.html')
 
 def navbar(request):
       return render(request, 'healthcheck/navbar.html')
