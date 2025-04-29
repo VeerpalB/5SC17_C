@@ -1,0 +1,80 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center; padding: 20px; background: linear-gradient(to bottom, #f9f9f9, #ffffff); min-height: 90vh; overflow-x: hidden;">
+    <div style="background: white; border-radius: 12px; padding: 20px 30px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); width: 90%; max-width: 850px;">
+
+        <h2 style="text-align: center; margin-bottom: 10px;">Welcome to the department overview brief</h2>
+        <p style="text-align: center; color: #555;">
+            Here you'll find valuable resources, key information and updates. <br>
+            Dive in to learn more about our goals, processes, and how we work together to achieve success!
+        </p>
+
+        <div style="margin-top: 30px; border: 1px solid black; padding: 20px; border-radius: 8px;">
+            <form method="get" style="display: flex; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap;">
+                <div>
+                    <label for="department">Select the department you are wanting to view ▾</label><br>
+                    <select id="department" name="department" style="margin-top: 8px; padding: 5px; border-radius: 4px;" onchange="this.form.submit()">
+                        <option {% if department == 'Sky Design' %}selected{% endif %}>Sky Design</option>
+                        <option {% if department == 'Sky Creation' %}selected{% endif %}>Sky Creation</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="date">Date ▾</label><br>
+                    <select id="date" name="date" style="margin-top: 8px; padding: 5px; border-radius: 4px;" onchange="this.form.submit()">
+                        <option {% if date == '2024-12-01' %}selected{% endif %}>2024-12-01</option>
+                        <option {% if date == '2024-11-01' %}selected{% endif %}>2024-11-01</option>
+                        <option {% if date == '2024-10-01' %}selected{% endif %}>2024-10-01</option>
+                        <option {% if date == '2024-09-01' %}selected{% endif %}>2024-09-01</option>
+                        <option {% if date == '2024-08-01' %}selected{% endif %}>2024-08-01</option>
+                        <option {% if date == '2024-07-01' %}selected{% endif %}>2024-07-01</option>
+                    </select>
+                </div>
+            </form>
+
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+                <canvas id="colorChart" width="280" height="180" style="margin-right: 10px;"></canvas>
+                <canvas id="trendChart" width="280" height="180" style="margin-left: 10px;"></canvas>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const colorChart = new Chart(document.getElementById('colorChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Red', 'Yellow', 'Green'],
+            datasets: [{
+                label: 'Vote Count',
+                data: {{ color_votes|safe }},
+                backgroundColor: ['#e74c3c', '#f1c40f', '#2ecc71']
+            }]
+        },
+        options: {
+            plugins: { legend: { display: false } },
+            scales: { y: { beginAtZero: true } }
+        }
+    });
+
+    const trendChart = new Chart(document.getElementById('trendChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Getting worse', 'Stable', 'Improving'],
+            datasets: [{
+                label: 'Health Trend',
+                data: {{ trend_votes|safe }},
+                backgroundColor: ['#e74c3c', '#f1c40f', '#2ecc71']
+            }]
+        },
+        options: {
+            plugins: { legend: { display: false } },
+            scales: { y: { beginAtZero: true } }
+        }
+    });
+</script>
+{% endblock %}

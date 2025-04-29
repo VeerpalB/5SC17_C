@@ -17,5 +17,5 @@ urlpatterns = [
 
     path('navbar/', views.navbar),
     path('welcome/', views.welcome_page, name='welcome'), #Nadia
-  
+    path('department-overview/', views.dept_overview, name='department_overview'),
 ]
