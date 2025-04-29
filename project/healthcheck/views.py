@@ -1,5 +1,6 @@
 from django.shortcuts import render
-
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 
 
@@ -22,7 +23,13 @@ def logout(request):
 def voting(request):
     return render(request, 'healthcheck/voting.html')
 
+def session(request):
+    
+    
+    return render(request, 'healthcheck/session.html')  
 
+def dashboard(request):
+    return render(request, 'healthcheck/dashboard.html')
 
 
 def navbar(request):
