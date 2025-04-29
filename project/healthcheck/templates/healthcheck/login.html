@@ -1,59 +1,102 @@
 {% block content %}
 <style>
+    body {
+        background-color: #ffffff;
+        font-family: 'Inter', sans-serif;
+        letter-spacing: 0.64px;
+        font-weight: 300;
+        font-size: 18px;
+        margin: 0;
+        padding: 0;
+    }
 
-    .sky-img{
-        max-width: 8%;
-        margin-top: 100px;
-        padding: 300px;
-      }
+    .container {
+        max-width: 400px;
+        margin: 80px auto;
+        text-align: center;
+    }
 
-h2{
-    text-align:center;
-    padding:20px;
-    font-weight:bold;
-    font-size: large;
-}
+    .logo {
+        margin-bottom: 20px;
+    }
 
-body{
-    background-color: #ffffff;
-    letter-spacing: 0.64px;
-    font: 300 18px 'Inter', sans-serif;
-}
+    .logo img {
+        width: 120px;
+    }
 
-button{
-color:blue;
-}
+    h2 {
+        font-weight: bold;
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
 
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        padding: 12px 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    button[type="submit"] {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    small {
+        display: block;
+        margin-top: 20px;
+        font-size: 14px;
+    }
+
+    small a {
+        color: #00aaff;
+        text-decoration: none;
+    }
+
+    small a:hover {
+        text-decoration: underline;
+    }
 
 </style>
 
-<div>
+<div class="container">
 
+    <div class="logo">
+        <img src="/static/images/sky-logo.png" alt="Sky Life Logo">
+    </div>
 
-<form method="POST">
-{% csrf_token %}
+    <h2>LOG IN</h2>
 
+    <form method="POST">
+        {% csrf_token %}
 
+        <input type="text" id="username" name="username" placeholder="Enter Your Username">
+        <input type="password" id="pwd" name="pwd" placeholder="Enter Your Password">
 
-<h2>Log In</h2>
+        <button type="submit">Log In</button>
+    </form>
 
-<div>
-<label for="username">Enter Your Username:</label><br>
-<input type="text" id="username" name="username"><br>
-<label for="pwd">Enter Your Password:</label><br>
-<input type="password" id="pwd" name="pwd">
-
-<button type="submit">Log in</button>
-
-</div>
-</form>
-<div>
-<small>
-<a href="{% url 'forgotten_password' %}">Forgotten your password? </a>
-
-
-Don't have an account? <a href="{% url 'signup' %}">Sign Up Now</a>
-</small>
-</div>
+    <small>
+        <a href="{% url 'forgotten_password' %}">Forgotten your password?</a><br><br>
+        Don't have an account? <a href="{% url 'signup' %}">Sign up</a>
+    </small>
 </div>
 {% endblock content %}
