@@ -1,24 +1,55 @@
-{% extends "main.html" %}
-
 {% block content %}
+<style>
+
+    .sky-img{
+        max-width: 8%;
+        margin-top: 100px;
+        padding: 300px;
+      }
+
+h2{
+    text-align:center;
+    padding:20px;
+    font-weight:bold;
+    font-size: large;
+}
+
+body{
+    background-color: #ffffff;
+    letter-spacing: 0.64px;
+    font: 300 18px 'Inter', sans-serif;
+}
+
+button{
+color:blue;
+}
+
+
+</style>
+
 <div>
 
 
 <form method="POST">
 {% csrf_token %}
-<fieldset>
-<legend>Log In</legend>
+
+
+
+<h2>Log In</h2>
+
+<div>
 <label for="username">Enter Your Username:</label><br>
 <input type="text" id="username" name="username"><br>
 <label for="pwd">Enter Your Password:</label><br>
 <input type="password" id="pwd" name="pwd">
 
 <button type="submit">Log in</button>
-</fieldset>
+
+</div>
 </form>
 <div>
 <small>
-<a href="{% url 'forgottenpassword' %}">Forgotten your password? </a>
+<a href="{% url 'forgotten_password' %}">Forgotten your password? </a>
 
 
 Don't have an account? <a href="{% url 'signup' %}">Sign Up Now</a>
