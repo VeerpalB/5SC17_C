@@ -7,20 +7,14 @@ from . import views
 urlpatterns = [
     path('user', views.home, name='home_name'),
 
-    path('profile/', views.profile, name='profile_name'),
-    path('progress/', views.progress, name='progress_name'),
-    path('help/', views.help, name='help_name'),
-    path('logout/', views.logout, name='logout_name'),
-    path('voting/', views.voting, name='voting_name'),
-    path('session/', views.session, name='session_name'),
-    path('dashboard/', views.dashboard, name='dashboard_name'),
-    path('profile', views.profile, name='profile_name'),
-    path('progress', views.progress, name='progress_name'),
-    path('help', views.help, name='help_name'),
-    path('logout', views.logout, name='logout_name'),
-    path('voting', views.voting, name='voting_name'),
-
-
+    path('profile/', views.profile, name='profile'),
+    path('progress/', views.progress, name='progress'),
+    path('help/', views.help, name='help'),
+    path('logout/', views.logout, name='logout'),
+    path('voting/', views.voting, name='voting'),
+    path('session/', views.session, name='session'),
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('help/', views.help, name='help'),
     path('login/', views.login, name='login'),
     path('signup/', views.signup, name='signup'),
     path('forgotten_password/', views.forgotten_password, name='forgotten_password'),
