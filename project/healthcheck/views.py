@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
-from django.urls import reverse
+
 
 
 
@@ -23,26 +22,25 @@ def logout(request):
 def voting(request):
     return render(request, 'healthcheck/voting.html')
 
-
-def session(request):
-    
-    
-    return render(request, 'healthcheck/session.html')  
-
-def dashboard(request):
-    return render(request, 'healthcheck/dashboard.html')
-
 def login(request):
     return render(request, "healthcheck/login.html")
 
 def signup(request):
     return render(request, "healthcheck/signup.html")
 
-def forgotten_password(request):
-    return render(request, 'healthcheck/forgotten_password.html')
+def forgottenpassword(request):
+    return render(request, 'healthcheck/forgottenpassword.html')
 
-def forgotten_password_confirmation(request):
-    return render(request, 'healthcheck/forgotten_password_confirmation.html')
+
+def overview_home(request):
+    return render(request, 'healthcheck/overviewhome.html')
+
+def department_overview(request):
+    return render(request, 'healthcheck/department_overview.html')
+
+def team_overview(request):
+    return render(request, 'healthcheck/team_overview.html')
+
 
 def navbar(request):
       return render(request, 'healthcheck/navbar.html')
