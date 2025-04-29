@@ -66,10 +66,9 @@ def login(request):
         user = authenticate(request, username=username, password=password)
         
         if user is not None:
-
-
-
-
+            auth_login(request, user)
+            messages.success(request, f'Welcome back, {username}!')
+            return redirect('healthcheck_home')
 
 
     return render(request, "healthcheck/login.html")
