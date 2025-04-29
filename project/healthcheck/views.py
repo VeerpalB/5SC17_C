@@ -38,7 +38,7 @@ def navbar(request):
 def welcome_page(request): #Nadia's task
     return render(request, 'healthcheck/welcome.html')
 
-from django.shortcuts import render
+
 
 def dept_overview(request):
     department = request.GET.get('department', 'Sky Design')
@@ -55,3 +55,21 @@ def dept_overview(request):
         'trend_votes': trend_votes,
     }
     return render(request, 'healthcheck/dept_overview.html', context)
+
+    
+def team_overview(request):
+    team = request.GET.get('team', 'T1')
+    date = request.GET.get('date', '2024-12-01')
+
+    # DUMMY DATA — later replace with real Vote queries
+    color_votes = [5, 10, 15]  # Red, Yellow, Green
+    trend_votes = [4, 9, 14]   # Getting worse, Stable, Improving
+
+    context = {
+        'team': team,
+        'date': date,
+        'color_votes': color_votes,
+        'trend_votes': trend_votes,
+    }
+
+    return render(request, 'healthcheck/team_overview.html', context)
