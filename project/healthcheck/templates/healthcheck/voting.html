@@ -1,26 +1,375 @@
-{%extends 'main.html'%}
+{% extends 'main.html' %}
 {% load static %}
-{% block content%}
+
+{% block content %}
 
 
+<form method="post" action="{% url 'progress_name' %}">
+  {% csrf_token %}
 
-
-<div class="vote">
-    <h3>How this works</h3>
-
+  <div class="tab" id="step1">
+    <h2 style="text-align: center;">How This Works:</h2>
+    <ol>
+      <li>You will be shown a category with a description of the status.</li>
+      <li>You will then be asked to select a traffic light rating.</li>
+    </ol>
+  
+    <div class="container">
+      <div class="container-section">
+        <h3>Select Trend</h3>
+        <div class="select-box button1"  data-value="Red">
+          There are significant issues that require immediate attention.
+        </div>
+        <div class="select-box button2"   data-value="Yellow">
+          Some challenges exist, but progress is still acceptable.
+        </div>
+        <div class="select-box button3"   data-value="Green">
+          Everything is on track, and progress is positive.
+        </div>
+      </div>
+  
+      <div class="container-section">
+        <h3>Select State</h3>
+        <div class="select-box button1"   data-value="worse">Getting Worse</div>
+        <div class="select-box button2"   data-value="stable">Stable</div>
+        <div class="select-box button3"   data-value="improving">Improving</div>
+      </div>
+    </div>
+  
+    <div class="container">
+      <label for="note">Notes:</label>
+      <textarea id="note" style="width: 100%;"></textarea>
+    </div>
+  </div>
   
 
-    <h4>The Health Checker is a core feature of the Health Check System, designed to monitor and track the progress of teams and individuals over time. It enables users to assess their health so they can stay aligned on performance and areas of improvement.</h4>
+  <div class="tab" id="step2">
+    <h2 style="text-align: center;">Delivering Value</h2>
+
+    <div class="container">
+      <div class="container-section">
+        <h3>Select Trend</h3>
+        <div class="select-box button1"  data-value=" Red">
+          We deliver crap. We feel ashamed to deliver it. Our stakeholders hate u        </div>
+        <div class="select-box button2"  data-value="Yellow">
+          Some challenges exist, but progress is still acceptable.        </div>
+        <div class="select-box button3"   data-value=" Green">
+          We deliver great stuff! We're proud of it and our stakeholders are really happy.        </div>
+      </div>
+
+      <div class="container-section">
+        <h3>Select State</h3>
+        <div class="select-box button1"   data-value="worse">Getting Worse</div>
+        <div class="select-box button2"   data-value="stable">Stable</div>
+        <div class="select-box button3"   data-value="improving">Improving</div>
+      </div>
+    </div>
+  
+    <div class="container">
+      <label for="note">Notes:</label>
+      <textarea id="note" style="width: 100%;"></textarea>
+    </div>
+  </div>
 
 
-    <img src="{% static 'healthcheck/traffic.png' %}" alt="Traffic Light">
+  <div class="tab" id="step3">
+    <h2 style="text-align: center;">Easy to release</h2>
+
+    <div class="container">
+      <div class="container-section">
+        <h3>Select Trend</h3>
+        <div class="select-box button1"   data-value="Red">
+          Releasing is risky, painful, lots of manual work and takes forever.
+        </div>
+        <div class="select-box button2"   data-value="Yellow">
+          Some challenges exist, but progress is still acceptable.
+        </div>
+        <div class="select-box button3"   data-value="Green">
+          Releasing is simple, safe, painless and mostly automated.
+        </div>
+      </div>
+
+           <div class="container-section">
+        <h3>Select State</h3>
+        <div class="select-box button1"   data-value="worse">Getting Worse</div>
+        <div class="select-box button2"   data-value="stable">Stable</div>
+        <div class="select-box button3"   data-value="improving">Improving</div>
+      </div>
+    </div>
+  
+    <div class="container">
+      <label for="note">Notes:</label>
+      <textarea id="note" style="width: 100%;"></textarea>
+    </div>
+  </div>
 
 
-</div>
-        <button class="button button1">Getting Worse</button>
-        <button class="button button2">Stable</button>        
-        <button class="button button3">Improving</button>
+
+  <div class="tab" id="step4">
+    <h2 style="text-align: center;">Fun</h2>
+
+    <div class="container">
+      <div class="container-section">
+        <h3>Select Trend</h3>
+        <div class="select-box button1"   data-value="Red">
+          Boooooooring..
+                </div>
+        <div class="select-box button2"   data-value="Yellow">
+          Some challenges exist, but progress is still acceptable.
+                </div>
+        <div class="select-box button3"   data-value="Green">
+          We love going to work and have great fun working together!        </div>
+      </div>
+
+      <div class="container-section">
+        <h3>Select State</h3>
+        <div class="select-box button1"   data-value="worse">Getting Worse</div>
+        <div class="select-box button2"  data-value="stable">Stable</div>
+        <div class="select-box button3"   data-value="improving">Improving</div>
+      </div>
+    </div>
+  
+    <div class="container">
+      <label for="note">Notes:</label>
+      <textarea id="note" style="width: 100%;"></textarea>
+    </div>
+  </div>
 
 
 
-{% endblock content %}
+  <div class="tab" id="step7">
+    <h2 style="text-align: center;">Learning</h2>
+
+    <div class="container">
+      <div class="container-section">
+        <h3>Select Trend</h3>
+        <div class="select-box button1"  data-value="Red">
+          We never have time to learn anything
+                </div>
+        <div class="select-box button2"  data-value="Yellow">
+          Some challenges exist, but progress is still acceptable.
+                </div>
+        <div class="select-box button3" data-value="Green">
+          We're learning lots of interesting stuff all the time
+                </div>
+      </div>
+
+      <div class="container-section">
+        <h3>Select State</h3>
+        <div class="select-box button1"   data-value="worse">Getting Worse</div>
+        <div class="select-box button2"   data-value="stable">Stable</div>
+        <div class="select-box button3"   data-value="improving">Improving</div>
+      </div>
+    </div>
+  
+    <div class="container">
+      <label for="note">Notes:</label>
+      <textarea id="note" style="width: 100%;"></textarea>
+    </div>
+  </div>
+
+
+  <div class="tab" id="step8">
+    <h2 style="text-align: center;">Mission</h2>
+
+    <div class="container">
+      <div class="container-section">
+        <h3>Select Trend</h3>
+        <div class="select-box button1"  " data-value="Red">
+          We have no idea why we are here, there's no high lever picture or focus. Our so called mission is completely unclear and uninspiring.       
+         </div>
+        <div class="select-box button2"   data-value="Yellow">
+          Some challenges exist, but progress is still acceptable.
+                </div>
+        <div class="select-box button3"   data-value="Green">
+          We know exactly why we are here and we’re really excited about it!        </div>
+      </div>
+      <div class="container-section">
+        <h3>Select State</h3>
+        <div class="select-box button1"   data-value="worse">Getting Worse</div>
+        <div class="select-box button2"   data-value="stable">Stable</div>
+        <div class="select-box button3"   data-value="improving">Improving</div>
+      </div>
+    </div>
+  
+    <div class="container">
+      <label for="note">Notes:</label>
+      <textarea id="note" style="width: 100%;"></textarea>
+    </div>
+  </div>
+
+  <div class="tab" id="step10">
+    <h2 style="text-align: center;">Pawns or Players</h2>
+
+    <div class="container">
+      <div class="container-section">
+        <h3>Select Trend</h3>
+        <div class="select-box button1"   data-value="Red">
+          We are just pawns in a game of chess with no influence over what we build or how we build it     
+           </div>
+        <div class="select-box button2"   data-value="Yellow">
+          Some challenges exist, but progress is still acceptable.
+                </div>
+        <div class="select-box button3"   data-value="Green">
+          We are in control of our own destiny! We decide what to build and how to build it.
+                </div>
+      </div>
+
+      <div class="container-section">
+        <h3>Select State</h3>
+        <div class="select-box button1"   data-value="worse">Getting Worse</div>
+        <div class="select-box button2"   data-value="stable">Stable</div>
+        <div class="select-box button3"  data-value="improving">Improving</div>
+      </div>
+    </div>
+  
+    <div class="container">
+      <label for="note">Notes:</label>
+      <textarea id="note" style="width: 100%;"></textarea>
+    </div>
+  </div>
+
+  <div class="tab" id="step3">
+    <h2 style="text-align: center;">Suitable Process</h2>
+
+    <div class="container">
+      <div class="container-section">
+        <h3>Select Trend</h3>
+        <div class="select-box button1"   data-value="Red">
+          Our way of working sucks 
+               </div>
+        <div class="select-box button2"  data-value="Yellow">
+          Some challenges exist, but progress is still acceptable.
+                </div>
+        <div class="select-box button3"  data-value="Green">
+          Our way of working fitsus perfectly!       
+         </div>
+      </div>
+
+      <div class="container-section">
+        <h3>Select State</h3>
+        <div class="select-box button1"  data-value="worse">Getting Worse</div>
+        <div class="select-box button2"  data-value="stable">Stable</div>
+        <div class="select-box button3"  data-value="improving">Improving</div>
+      </div>
+    </div>
+  
+    <div class="container">
+      <label for="note">Notes:</label>
+      <textarea id="note" style="width: 100%;"></textarea>
+    </div>
+  </div>
+
+  <div class="tab" id="step3">
+    <h2 style="text-align: center;">Support</h2>
+    
+    
+    <div class="container">
+      <div class="container-section">
+        <h3>Select Trend</h3>
+        <div class="select-box button1"  data-value="Red">
+          We keep getting stuck because we can't get the support and help thatwe ask for.  
+               </div>
+        <div class="select-box button2" data-value="Yellow">
+          Some challenges exist, but progress is still acceptable.
+                </div>
+        <div class="select-box button3"  data-value="Green">
+          We always get great support and help when we ask for it!
+                 </div>
+      </div>
+
+      <div class="container-section">
+        <h3>Select State</h3>
+        <div class="select-box button1"  data-value="worse">Getting Worse</div>
+        <div class="select-box button2" data-value="stable">Stable</div>
+        <div class="select-box button3"  data-value="improving">Improving</div>
+      </div>
+    </div>
+  
+    <div class="container">
+      <label for="note">Notes:</label>
+      <textarea id="note" style="width: 100%;"></textarea>
+    </div>
+  </div>
+
+  <div class="tab">
+    <h2 style="text-align: center;">Team Work</h2>
+
+    <div class="container">
+      <div class="container-section">
+        <h3>Select Trend</h3>
+        <div class="select-box button1"  data-value="Red">
+          We are a bunch of individuals that neither know nor care about what the other people in the squad are doing
+              </div>
+        <div class="select-box button2"  data-value="Yellow">
+          Some challenges exist, but progress is still acceptable.
+                </div>
+        <div class="select-box button3"  data-value="Green">
+          We are a totally gelled super-team with awesome collaboration!
+                 </div>
+      </div>
+
+      <div class="container-section">
+        <h3>Select State</h3>
+        <div class="select-box button1"  data-value="worse">Getting Worse</div>
+        <div class="select-box button2"  data-value="stable">Stable</div>
+        <div class="select-box button3"  data-value="improving">Improving</div>
+      </div>
+    </div>
+  
+    <div class="container">
+      <label for="note">Notes:</label>
+      <textarea id="note" style="width: 100%;"></textarea>
+    </div>
+  </div>
+
+
+  <div class="tab" id="step3">
+    <h2 style="text-align: center;">Health of codebase</h2>
+
+    <div class="container">
+      <div class="container-section">
+        <h3>Select Trend</h3>
+        <div class="select-box button1" data-value="Red">
+          Our code is a pile of dung and technical debt is raging out of control
+                       </div>
+        <div class="select-box button2"  data-value="Yellow">
+          Some challenges exist, but progress is still acceptable.
+                </div>
+        <div class="select-box button3"  data-value="Green">
+          We're proud of the quality of our code! It is clean, easy to read andhas great test coverage
+
+         </div>
+      </div>
+
+      <div class="container-section">
+        <h3>Select State</h3>
+        <div class="select-box button1"  data-value="worse">Getting Worse</div>
+        <div class="select-box button2"  data-value="stable">Stable</div>
+        <div class="select-box button3"  data-value="improving">Improving</div>
+      </div>
+    </div>
+  
+    <div class="container">
+      <label for="note">Notes:</label>
+      <textarea id="note" style="width: 100%;"></textarea>
+    </div>
+  </div>
+
+
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" onclick="nextPrev(-1)">Previous</button>
+      <button type="button" onclick="nextPrev(1)">Next</button>
+    </div>
+  </div>
+
+  <div style="text-align:center;margin-top:40px;">
+
+  </div>
+
+</form>
+
+
+<script src="{% static 'healthcheck/voting.js' %}"></script>
+{% endblock %}

@@ -1,31 +1,26 @@
-{% extends 'overview/main.html' %}
-{% load static %}
-
+{% extends 'main.html' %}
 
 
 {% block content %}
-<div class="overview-container">
-    <h2 class="overview-heading">Welcome to the Health Check System</h2>
-    <p class="overview-description">
-        Designed to help teams and departments track progress and maintain high standards.
-        This platform is built for you to view the overall results for all teams or departments from any sessions taken.
-    </p>
+<div class="wrapper">
+  <h1>Welcome to the Health Check System</h1>
+  <p>Designed to help teams and departments track progress and maintain high standards.
+     This platform is built for you to view the overall results for all teams or departments from any sessions taken.
+  </p>
 
-    <div class="card-container">
-        <a href="{% url 'overview:department' %}" class="card-link">
-            <div class="overview-card">
-                <h5>Department Overview</h5>
-                <p>Find out about department trends and emerging challenges which help improve decision making.</p>
-            </div>
-        </a>
+  <div class="rectangle">
+      <div class="rectangle2">
+        <p><u><br>Department Overview</u></br>
+          Find out about Department trends, emerging challenges which help improve decision-making</p>
+          <a href="{% url 'department_overview' %}" class="arrow-button">➔</a>
+      </div>
 
-        <a href="{% url 'overview:team' %}" class="card-link">
-            <div class="overview-card">
-                <h5>Team Overview</h5>
-                <p>Find out about team trends, help improve efficiency, drive and innovation.</p>
-            </div>
-        </a>
-    </div>
+      <div class="rectangle2">
+          
+          <p><u><br>Team Overview</u></br>
+            Find out about team trends, help improve efficiency, drive and innovation</p>
+          <a href="{% url 'team_overview' %}" class="arrow-button">➔</a>
+      </div>
+  </div>
 </div>
-{% endblock %}
-
+{% endblock content %}

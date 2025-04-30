@@ -7,12 +7,28 @@ from . import views
 urlpatterns = [
     path('user', views.home, name='home_name'),
     path('profile/', views.profile, name='profile_name'),
+<<<<<<< HEAD
     path('progress/', views.progress, name='progress_name'),
     path('help/', views.help, name='help_name'),
     path('logout/', views.logout, name='logout_name'),
     path('voting/', views.voting, name='voting_name'),
     path('login/', views.login, name='login_name'),
     path('signup/', views.signup, name='signup_name'),
+=======
+    path('progress', views.progress, name='progress_name'),
+    path('help', views.help, name='help_name'),
+    path('logout', views.logout, name='logout_name'),
+    path('voting', views.voting, name='voting_name'),
+    path('login/', views.login, name='login'),
+    path('forgotten_password/', views.forgotten_password, name='forgotten_password'),
+    path('forgotten_password_confirmation/', views.forgotten_password_confirmation, name='forgotten_password_confirmation'),
+    path('signup/', views.signup, name='signup'),
+    path('overview/home', views.overview_home, name='overview_home'),
+    path('department/overview', views.department_overview, name='department_overview'),
+    path('overview/team', views.team_overview, name='team_overview'),
+    
+   
+>>>>>>> e77d53a3000ceb24b830d2919f7e99a7a7159c07
 
 
     path('navbar/', views.navbar),

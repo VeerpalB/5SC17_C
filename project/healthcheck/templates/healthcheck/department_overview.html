@@ -1,0 +1,34 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<div class="department">
+    <p>
+        Welcome to the department overview brief. Here you'll find valuable resources, key information and updates.
+        Dive in to learn more about our goals, processes, and how we work together to achieve success!
+    </p>
+
+    <form method="get" action="">
+        {% csrf_token %}
+        
+        <div class="dropdown-row">
+            <div class="dropdown-group">
+                <label for="department">Select the department you are wanting to view:</label>
+                <select id="department" name="department">
+                    <option value="">-- Select Department --</option>
+                    <option value="Sky Creation">Sky Creation</option>
+                    <option value="Sky Design">Sky Design</option>
+                </select>
+            </div>
+
+            <div class="dropdown-group">
+                <label for="date">Select the date:</label>
+                <input type="date" id="date" name="date">
+            </div>
+
+            <div>
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock content %}
