@@ -4,8 +4,8 @@ if (raw) {
   const group = 'group1'; 
 
   if (data[group]) {
-    const labels = Object.keys(data[group1]);       
-    const values = Object.values(data[group2]);     
+    const labels = Object.keys(data[group]);       
+    const values = Object.values(data[group]);     
 
     const ctx = document.getElementById('myChart').getContext('2d');
     new Chart(ctx, {
