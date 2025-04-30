@@ -34,6 +34,8 @@ function nextPrev(n) {
   showTab(currentTab);
 }
 
+
+
 document.querySelectorAll('.select-box').forEach(box => {
   box.addEventListener('click', function () {
     const group = this.getAttribute('data-group');
@@ -43,8 +45,16 @@ document.querySelectorAll('.select-box').forEach(box => {
       el.classList.remove('selected');
     });
 
-    this.classList.add('selected');
+    let selections = JSON.parse(localStorage.getItem('userSelections')) || {};
 
-    selections[group] = value;
+    if (!selections[group]) {
+      selections[group] = { Red: 0, Yellow: 0, Green: 0 };
+    }
+
+    selections[group][value] += 1;
+
+    localStorage.setItem('userSelections', JSON.stringify(selections));
+    console.log('Selection saved:', selections);
+
   });
 });

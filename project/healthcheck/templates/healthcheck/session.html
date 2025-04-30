@@ -4,18 +4,29 @@
 {% block content%}
 
 <body>
-    <div class="vote">
-        <h1></h1>
-        <img src="{% static 'healthcheck/traffic.png' %}" alt="Traffic Light">
-      </div>
+   <div class="main">
+   <h3>Please Select Your Session:</h3>
+   <select id="session-select" name="session" required>
+    <option value="" disabled selected>Select Your Session</option>
+    <option value="session">Session 1 - First quaterly check in</option>
+    <option value="session2" >Session 2 - Second quaterly check in</option>
+    <option value="session3">Session 3 - Third quaterly check in</option>
+    <option value="session4">Session 4 - Last quaterly check in</option>
+     </select>
+  
    
-  <div class="colourbutton"> 
-      <button class="button button1">Getting Worse</button>
-      <button class="button button2">Stable</button>        
-      <button class="button button3">Improving</button>
-    </div>
+   <button id="startsession">Start Session</button>
+   <a href="http://127.0.0.1:8000/voting/">
+   </a>
+   
+</div>
    
   
     </body>
+    <script src="{% static 'healthcheck/session.js' %}"></script>
+
+  
+
+  
     
 {% endblock content %}

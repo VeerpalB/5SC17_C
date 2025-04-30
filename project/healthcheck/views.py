@@ -1,10 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login as auth_login
+from django.db.models import Count
 from django.contrib import messages
-
 
 
 
@@ -16,7 +15,9 @@ def profile(request):
     return render(request, 'healthcheck/profile.html')
 
 def progress(request):
+   
     return render(request, 'healthcheck/progress.html')
+    
 
 def help(request):
     return render(request, 'healthcheck/help.html')
@@ -26,6 +27,11 @@ def logout(request):
 
 def voting(request):
     return render(request, 'healthcheck/voting.html')
+
+
+def edit(request):
+    return render(request, 'healthcheck/edit.html')
+
 
 def session(request):
     return render(request, 'healthcheck/session.html')  
@@ -95,6 +101,15 @@ def login(request):
     
 
 
+
+def progress_view(request):
+    vote_data = (
+        Vote.objects
+        .values('status__statusColor')
+        .annotate(count=Count('id'))
+    )
+
+    return render(request, 'progress.html', {'vote_data': list(vote_data)})
    
 
 

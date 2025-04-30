@@ -145,7 +145,7 @@ button:hover {
 }
 
 .select-box:hover {
-  background-color: #3A68D1;
+  background-color: #b0d13a;
 }
 
 .select-box.selected {
@@ -251,6 +251,7 @@ button:hover {
   flex-wrap: wrap;
 }
 
+
 .rectangle2 {
   border: 1px solid #ccc;
   padding: 20px;
@@ -302,3 +303,53 @@ button:hover {
     margin-top: 50px;
   }
 
+.rectangle2 {
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 450px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px #aaa;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.rectangle2:hover {
+  transform: translateY(-5px);
+  box-shadow: 4px 4px 15px #888;
+}
+
+.rectangle2 a {
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  color: #0c0d0d;
+}
+
+.rectangle2 a:hover {
+  text-decoration: underline;
+}
+
+.dropdown-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-top: 30px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.dropdown-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+}
+
+  .dropdown-group {
+      width: 100%;
+  }
+
+  .aboutus {
+    text-align: center;
+    margin-top: 50px;
+  }
