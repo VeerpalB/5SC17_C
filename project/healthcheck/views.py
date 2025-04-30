@@ -46,7 +46,7 @@ def team_overview(request):
 def forgotten_password(request):
     if request.method == 'POST':
         email = request.POST.get('email')
-        print("Password reset requested for:", email)
+        messages.success(request, f"An email has been sent to {email} with password reset instructions.")
         return redirect('forgotten_password_confirmation')
 
     return render(request, 'healthcheck/forgotten_password.html')
