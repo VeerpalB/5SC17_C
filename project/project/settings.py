@@ -38,11 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'healthcheck.apps.HealthcheckConfig', 
-<<<<<<< HEAD
     
-=======
    
->>>>>>> e77d53a3000ceb24b830d2919f7e99a7a7159c07
     
 ]
 

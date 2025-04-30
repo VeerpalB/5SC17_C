@@ -1,16 +1,24 @@
+{# Extend the base template that contains shared layout like navbar #}
 {% extends "main.html" %}
 
 {% block content %}
+<!-- Outer container for centering the content and applying padding and background -->
 <div style="display: flex; justify-content: center; align-items: center; padding: 20px; background: linear-gradient(to bottom, #f9f9f9, #ffffff); overflow-x: hidden;">
+    
+    <!-- Content card with white background and box shadow for visual appeal -->
     <div style="background: white; border-radius: 12px; padding: 20px 30px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); width: 90%; max-width: 850px;">
 
+        <!-- Heading and introductory text -->
         <h2 style="text-align: center; margin-bottom: 10px;">Welcome to the team overview brief</h2>
         <p style="text-align: center; color: #555;">
             Here you’ll find key detail about your team. Stay updated on team progress, collaboration efforts, and ongoing projects. Explore the details to understand how we work together to achieve success!
         </p>
 
+        <!-- Selection form for choosing team and session date -->
         <div style="margin-top: 30px; border: 1px solid black; padding: 20px; border-radius: 8px;">
             <form method="get" style="display: flex; justify-content: space-between; margin-bottom: 20px; flex-wrap: wrap;">
+                
+                <!-- Team selection dropdown -->
                 <div>
                     <label for="team">Select the team you are wanting to view ▾</label><br>
                     <select id="team" name="team" style="margin-top: 8px; padding: 5px; border-radius: 4px;" onchange="this.form.submit()">
@@ -23,6 +31,7 @@
                     </select>
                 </div>
 
+                <!-- Date/session selection dropdown -->
                 <div>
                     <label for="date">Date ▾</label><br>
                     <select id="date" name="date" style="margin-top: 8px; padding: 5px; border-radius: 4px;" onchange="this.form.submit()">
@@ -33,10 +42,15 @@
                 </div>
             </form>
 
+            <!-- Two chart canvases side by side -->
             <div style="display: flex; justify-content: space-around; align-items: center; flex-wrap: wrap;">
+                
+                <!-- Chart showing vote distribution (Red, Yellow, Green) -->
                 <div style="width: 180px; height: 130px;">
                     <canvas id="colorChart" width="180" height="130"></canvas>
                 </div>
+
+                <!-- Chart showing team trend feedback (Worse, Stable, Improving) -->
                 <div style="width: 180px; height: 130px;">
                     <canvas id="trendChart" width="180" height="130"></canvas>
                 </div>
@@ -45,16 +59,18 @@
     </div>
 </div>
 
-<!-- Chart.js -->
+<!-- Chart.js library included from CDN -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
+    // Render bar chart for color-coded votes (Red, Yellow, Green)
     const colorChart = new Chart(document.getElementById('colorChart'), {
         type: 'bar',
         data: {
             labels: ['Red', 'Yellow', 'Green'],
             datasets: [{
                 label: 'Vote Count',
-                data: {{ color_votes|safe }},
+                data: {{ color_votes|safe }},  // Data passed from Django context
                 backgroundColor: ['#e74c3c', '#f1c40f', '#2ecc71']
             }]
         },
@@ -65,26 +81,27 @@
             scales: {
                 y: {
                     beginAtZero: true,
-                    max: 15
+                    max: 15  // Controls height of Y-axis for clarity
                 },
                 x: {
                     ticks: {
                         maxRotation: 0,
                         minRotation: 0,
-                        font: { size: 10 }
+                        font: { size: 10 }  // Smaller font to prevent overlap
                     }
                 }
             }
         }
     });
 
+    // Render bar chart for team trend feedback (Worse, Stable, Improving)
     const trendChart = new Chart(document.getElementById('trendChart'), {
         type: 'bar',
         data: {
             labels: ['Getting worse', 'Stable', 'Improving'],
             datasets: [{
                 label: 'Health Trend',
-                data: {{ trend_votes|safe }},
+                data: {{ trend_votes|safe }},  // Data passed from Django view
                 backgroundColor: ['#e74c3c', '#f1c40f', '#2ecc71']
             }]
         },

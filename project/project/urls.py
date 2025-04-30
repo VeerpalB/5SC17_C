@@ -26,11 +26,8 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('healthcheck.urls'))
-<<<<<<< HEAD
     
-=======
    
->>>>>>> e77d53a3000ceb24b830d2919f7e99a7a7159c07
    
 
 ]
