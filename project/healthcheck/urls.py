@@ -19,6 +19,10 @@ urlpatterns = [
     path('help', views.help, name='help_name'),
     path('logout', views.logout, name='logout_name'),
     path('voting', views.voting, name='voting_name'),
+
+    path('session', views.edit, name='sessions_name'),
+
+
     path('login/', views.login, name='login'),
     path('forgotten_password/', views.forgotten_password, name='forgotten_password'),
     path('forgotten_password_confirmation/', views.forgotten_password_confirmation, name='forgotten_password_confirmation'),
@@ -26,7 +30,7 @@ urlpatterns = [
     path('overview/home', views.overview_home, name='overview_home'),
     path('department/overview', views.department_overview, name='department_overview'),
     path('overview/team', views.team_overview, name='team_overview'),
-    
+    path('dashboard/', views.dashboard, name='dashboard'),
    
 >>>>>>> 514e73cac4ef398b1b035e029ece1dbde4cdb73f
 
