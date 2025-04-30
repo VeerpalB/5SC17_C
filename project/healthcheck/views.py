@@ -45,8 +45,8 @@ def dept_overview(request):
     date = request.GET.get('date', '2024-12-01')
 
     # Later you'll fetch real data based on department + date
-    color_votes = [5, 10, 15]     # Red, Yellow, Green votes
-    trend_votes = [4, 9, 14]      # Getting worse, Stable, Improving
+    color_votes = [5, 9, 14]     # Red, Yellow, Green votes
+    trend_votes = [3, 8, 13]      # Getting worse, Stable, Improving
 
     context = {
         'department': department,
