@@ -1,24 +1,20 @@
-{%extends 'main.html'%}
+{% extends "main.html" %}
 {% load static %}
-{% block content%}
+{% block content %}
 
 
-<body></body>
+<div class = main>
+<h2>Progress Overview</h2>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<div class="box">
-    <h5>Click on the buttons below to update your progress:</h5>
-
-
-
-
-
-
-
-
-
+<div style="display: flex; gap: 40px;">
+  <canvas id="trendChart"></canvas>
+  <canvas id="stateChart"></canvas>
 </div>
 
-
-
-
-{% endblock content %}
+<script>
+  const voteData = JSON.parse('{{ vote_data|safe|escapejs }}');
+</script>
+<script src="{% static 'healthchecker/progress.js' %}"></script>
+  </div>
+{% endblock %}
