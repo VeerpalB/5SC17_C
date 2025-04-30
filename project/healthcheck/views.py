@@ -7,6 +7,7 @@ from django.contrib.auth import authenticate, login as auth_login
 
 
 
+
 def home(request):
     return render(request, 'healthcheck/home.html')
 
@@ -31,6 +32,17 @@ def session(request):
 def dashboard(request):
     return render(request, 'healthcheck/dashboard.html')
 
+def overview_home(request):
+    return render(request, 'healthcheck/overview_home.html')
+
+
+def department_overview(request):
+    return render(request, 'healthcheck/department_overview.html')
+
+
+def team_overview(request):
+    return render(request, 'healthcheck/team_overview.html')
+
 def forgotten_password(request):
     return render(request, 'healthcheck/forgotten_password.html')
 
@@ -38,7 +50,7 @@ def forgotten_password_confirmation(request):
     return render(request, 'healthcheck/forgotten_password_confirmation.html')
 
 def navbar(request):
-      return render(request, 'healthcheck/navbar.html')
+    return render(request, 'healthcheck/navbar.html')
 
 def signup(request): 
     if request.method == 'POST':
@@ -69,7 +81,8 @@ def login(request):
             auth_login(request, user)
             messages.success(request, f'Welcome back, {username}!')
             return redirect('healthcheck_home')
-
+        else:
+            messages.error(request, 'Invalid username or password.')
 
     return render(request, "healthcheck/login.html")
     

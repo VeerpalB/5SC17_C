@@ -16,6 +16,9 @@ class CustomUserCreationForm(UserCreationForm):
     last_name = forms.CharField(max_length=30, required=True)
     role = forms.ChoiceField(choices=ROLE_CHOICES, required=True)
     
-     class Meta:
-        model = User
-        fields = ['username', 'first_name', 'last_name', 'email', 'role']
+class Meta:
+    model = User
+    fields = ['username', 'first_name', 'last_name', 'email', 'role']
+
+
+        
