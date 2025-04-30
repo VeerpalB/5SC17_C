@@ -5,6 +5,68 @@ from django.urls import reverse
 from django.contrib.auth import authenticate, login as auth_login
 from django.db.models import Count
 from django.contrib import messages
+from django.shortcuts import render, redirect
+from .models import Vote
+from django.contrib import messages
+
+def progress_view(request):
+    if request.method == 'POST':
+        categories = request.POST.getlist('category[]')
+        trends = request.POST.getlist('trend[]')
+        states = request.POST.getlist('state[]')
+        notes = request.POST.getlist('note[]')
+
+        for i in range(len(categories)):
+            Vote.objects.create(
+                category=categories[i],
+                trend=trends[i],
+                state=states[i],
+                note=notes[i]
+            )
+        messages.success(request, "Your votes were submitted successfully!")
+        return redirect('voting')  
+
+    return render(request, 'healthcheck/progress.html')
+
+def department_overview(request):
+    trend_labels = ["Red", "Yellow", "Green"]
+    state_labels = ["worse", "stable", "improving"]
+
+    trend_totals = [Vote.objects.filter(trend=t).count() for t in trend_labels]
+    state_totals = [Vote.objects.filter(state=s).count() for s in state_labels]
+
+    context = {
+        'trend_labels': trend_labels,
+        'trend_totals': trend_totals,
+        'state_labels': state_labels,
+        'state_totals': state_totals,
+    }
+    return render(request, 'healthcheck/department_overview.html', context)
+
+def team_overview(request):
+    team = request.GET.get('team')
+    category = request.GET.get('category')
+
+    votes = Vote.objects.all()
+
+    if team:
+        votes = votes.filter(team=team)  
+    if category:
+        votes = votes.filter(category=category)
+
+    trend_labels = ["Red", "Yellow", "Green"]
+    state_labels = ["Getting Worse", "Stable", "Improving"]
+
+    trend_totals = [votes.filter(trend=t).count() for t in trend_labels]
+    state_totals = [votes.filter(state=s).count() for s in state_labels]
+
+    context = {
+        'trend_labels': trend_labels,
+        'trend_totals': trend_totals,
+        'state_labels': state_labels,
+        'state_totals': state_totals,
+    }
+    return render(request, 'healthcheck/team_overview.html', context)
 
 
 
@@ -26,7 +88,7 @@ def help(request):
 def logout(request):
     return render(request, 'healthcheck/logout.html')
 
-def voting(request):
+def voting_view(request):
     return render(request, 'healthcheck/voting.html')
 
 
@@ -41,11 +103,9 @@ def dashboard(request):
     return render(request, 'healthcheck/dashboard.html')
 
 def overview_home(request):
-    return render(request, 'healthcheck/overview_home.html')
+    return render(request, 'healthcheck/overviewhome.html')
 
 
-def department_overview(request):
-    return render(request, 'healthcheck/department_overview.html')
 
 
 def team_overview(request):
@@ -103,15 +163,7 @@ def login(request):
 
 
 
-def progress_view(request):
-    vote_data = (
-        Vote.objects
-        .values('status__statusColor')
-        .annotate(count=Count('id'))
-    )
 
-    return render(request, 'progress.html', {'vote_data': list(vote_data)})
-   
 
 
 

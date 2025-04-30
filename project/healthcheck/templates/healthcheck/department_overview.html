@@ -1,4 +1,5 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block content %}
 <div class="department">
@@ -8,8 +9,6 @@
     </p>
 
     <form method="get" action="">
-        {% csrf_token %}
-        
         <div class="dropdown-row">
             <div class="dropdown-group">
                 <label for="department">Select the department you are wanting to view:</label>
@@ -30,5 +29,73 @@
             </div>
         </div>
     </form>
+
+    <div class="charts-row">
+        <div class="chart-wrapper">
+            <canvas id="trendChart"></canvas>
+        </div>
+        <div class="chart-wrapper">
+            <canvas id="stateChart"></canvas>
+        </div>
+    </div>
+    
+    
+    
 </div>
-{% endblock content %}
+
+{{ trend_labels|json_script:"trend-labels" }}
+{{ trend_totals|json_script:"trend-totals" }}
+{{ state_labels|json_script:"state-labels" }}
+{{ state_totals|json_script:"state-totals" }}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+window.onload = function () {
+    const trendLabels = JSON.parse(document.getElementById('trend-labels').textContent);
+    const trendTotals = JSON.parse(document.getElementById('trend-totals').textContent);
+    const stateLabels = JSON.parse(document.getElementById('state-labels').textContent);
+    const stateTotals = JSON.parse(document.getElementById('state-totals').textContent);
+
+    new Chart(document.getElementById('trendChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: trendLabels,
+            datasets: [{
+                label: 'Trend Votes',
+                data: trendTotals,
+                backgroundColor: ['red', 'yellow', 'green']
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { beginAtZero: true, title: { display: true, text: 'Number of Votes' } },
+                x: { title: { display: true, text: 'Trend' } }
+            }
+        }
+    });
+
+    new Chart(document.getElementById('stateChart').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: stateLabels,
+            datasets: [{
+                label: 'State Votes',
+                data: stateTotals,
+                backgroundColor: ['red', 'yellow', 'green']
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: { beginAtZero: true, title: { display: true, text: 'Number of Votes' } },
+                x: { title: { display: true, text: 'State' } }
+            }
+        }
+    });
+};
+</script>
+
+{% endblock %}
+
+  

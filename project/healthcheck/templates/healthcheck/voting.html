@@ -1,251 +1,21 @@
+
 {% extends 'main.html' %}
 {% load static %}
 {% block content %}
 
-
 <form method="post" action="{% url 'progress_name' %}">
   {% csrf_token %}
 
+  {% comment %} Fun {% endcomment %}
   <div class="tab">
-    <h2 >How This Works:</h2>
-    <ol>
-      <li>You will be shown a category with a description of the status.</li>
-      <li>You will then be asked to select a traffic light rating.</li>
-    </ol>
-  
-    <div class="container">
-      <div class="container-section">
-        <h3>Select Trend</h3>
-        <div class="select-box button1" data-group="group1" data-value="Red">
-          There are significant issues that require immediate attention.
-        </div>
-        <div class="select-box button2" data-group="group1" data-value="Yellow">
-          Some challenges exist, but progress is still acceptable.
-        </div>
-        <div class="select-box button3"   data-group="group1" data-value="Green">
-          Everything is on track, and progress is positive.
-        </div>
-      </div>
-  
-      <div class="container-section">
-        <h3>Select State</h3>
-        <div class="select-box button1" data-group="group2"  data-value="worse">Getting Worse</div>
-        <div class="select-box button2" data-group="group2"  data-value="stable">Stable</div>
-        <div class="select-box button3" data-group="group2"  data-value="improving">Improving</div>
-      </div>
-    </div>
-  
-    <div class="container">
-      <label for="note">Notes:</label>
-      <textarea id="note" style="width: 100%;"></textarea>
-    </div>
-  </div>
-  
-
-  <div class="tab" >
-    <h2 style="text-align: center;">Delivering Value</h2>
-
-    <div class="container">
-      <div class="container-section">
-        <h3>Select Trend</h3>
-        <div class="select-box button1" data-group="group1" data-value=" Red">
-          We deliver crap. We feel ashamed to deliver it. Our stakeholders hate u        </div>
-        <div class="select-box button2" data-group="group1" data-value="Yellow">
-          Some challenges exist, but progress is still acceptable.        </div>
-        <div class="select-box button3"  data-group="group1" data-value=" Green">
-          We deliver great stuff! We're proud of it and our stakeholders are really happy.        </div>
-      </div>
-
-      <div class="container-section">
-        <h3>Select State</h3>
-        <div class="select-box button1" data-group="group2"  data-value="worse">Getting Worse</div>
-        <div class="select-box button2" data-group="group2"  data-value="stable">Stable</div>
-        <div class="select-box button3" data-group="group2"  data-value="improving">Improving</div>
-      </div>
-    </div>
-  
-    <div class="container">
-      <label for="note">Notes:</label>
-      <textarea id="note" style="width: 100%;"></textarea>
-    </div>
-  </div>
-
-
-  <div class="tab" >
-    <h2 style="text-align: center;">Easy to release</h2>
-
-    <div class="container">
-      <div class="container-section">
-        <h3>Select Trend</h3>
-        <div class="select-box button1" data-group="group1"  data-value="Red">
-          Releasing is risky, painful, lots of manual work and takes forever.
-        </div>
-        <div class="select-box button2"  data-group="group1" data-value="Yellow">
-          Some challenges exist, but progress is still acceptable.
-        </div>
-        <div class="select-box button3" data-group="group1"  data-value="Green">
-          Releasing is simple, safe, painless and mostly automated.
-        </div>
-      </div>
-
-           <div class="container-section">
-        <h3>Select State</h3>
-        <div class="select-box button1" data-group="group2"  data-value="worse">Getting Worse</div>
-        <div class="select-box button2" data-group="group2"  data-value="stable">Stable</div>
-        <div class="select-box button3" data-group="group2"  data-value="improving">Improving</div>
-      </div>
-    </div>
-  
-    <div class="container">
-      <label for="note">Notes:</label>
-      <textarea id="note" style="width: 100%;"></textarea>
-    </div>
-  </div>
-
-
-
-  <div class="tab" >
     <h2 style="text-align: center;">Fun</h2>
-
     <div class="container">
       <div class="container-section">
         <h3>Select Trend</h3>
-        <div class="select-box button1" data-group="group1"  data-value="Red">
-          Boooooooring..
-                </div>
-        <div class="select-box button2"  data-group="group1" data-value="Yellow">
-          Some challenges exist, but progress is still acceptable.
-                </div>
-        <div class="select-box button3"  data-group="group1" data-value="Green">
-          We love going to work and have great fun working together!        </div>
+        <div class="select-box button1" data-group="group1" data-value="Red">Boooooooring..</div>
+        <div class="select-box button2" data-group="group1" data-value="Yellow">Some challenges exist, but progress is still acceptable.</div>
+        <div class="select-box button3" data-group="group1" data-value="Green">We love going to work and have great fun working together!</div>
       </div>
-
-      <div class="container-section">
-        <h3>Select State</h3>
-        <div class="select-box button1"  data-group="group2" data-value="worse">Getting Worse</div>
-        <div class="select-box button2" data-group="group2" data-value="stable">Stable</div>
-        <div class="select-box button3"  data-group="group2" data-value="improving">Improving</div>
-      </div>
-    </div>
-  
-    <div class="container">
-      <label for="note">Notes:</label>
-      <textarea id="note" style="width: 100%;"></textarea>
-    </div>
-  </div>
-
-
-
-  <div class="tab" >
-    <h2 style="text-align: center;">Learning</h2>
-
-    <div class="container">
-      <div class="container-section">
-        <h3>Select Trend</h3>
-        <div class="select-box button1" data-group="group1"  data-value="Red">
-          We never have time to learn anything
-                </div>
-        <div class="select-box button2" data-group="group1" data-value="Yellow">
-          Some challenges exist, but progress is still acceptable.
-                </div>
-        <div class="select-box button3" data-group="group1" data-value="Green">
-          We're learning lots of interesting stuff all the time
-                </div>
-      </div>
-
-      <div class="container-section">
-        <h3>Select State</h3>
-        <div class="select-box button1" data-group="group2"  data-value="worse">Getting Worse</div>
-        <div class="select-box button2"  data-group="group2" data-value="stable">Stable</div>
-        <div class="select-box button3"  data-group="group2" data-value="improving">Improving</div>
-      </div>
-    </div>
-  
-    <div class="container">
-      <label for="note">Notes:</label>
-      <textarea id="note" style="width: 100%;"></textarea>
-    </div>
-  </div>
-
-
-  <div class="tab" >
-    <h2 style="text-align: center;">Mission</h2>
-
-    <div class="container">
-      <div class="container-section">
-        <h3>Select Trend</h3>
-        <div class="select-box button1"  data-group="group1" data-value="Red">
-          We have no idea why we are here, there's no high lever picture or focus. Our so called mission is completely unclear and uninspiring.       
-         </div>
-        <div class="select-box button2" data-group="group1"  data-value="Yellow">
-          Some challenges exist, but progress is still acceptable.
-                </div>
-        <div class="select-box button3"  data-group="group1" data-value="Green">
-          We know exactly why we are here and we’re really excited about it!        </div>
-      </div>
-      <div class="container-section">
-        <h3>Select State</h3>
-        <div class="select-box button1" data-group="group2"  data-value="worse">Getting Worse</div>
-        <div class="select-box button2" data-group="group2"  data-value="stable">Stable</div>
-        <div class="select-box button3" data-group="group2"  data-value="improving">Improving</div>
-      </div>
-    </div>
-  
-    <div class="container">
-      <label for="note">Notes:</label>
-      <textarea id="note" style="width: 100%;"></textarea>
-    </div>
-  </div>
-
-  <div class="tab" >
-    <h2 style="text-align: center;">Pawns or Players</h2>
-
-    <div class="container">
-      <div class="container-section">
-        <h3>Select Trend</h3>
-        <div class="select-box button1"  data-group="group1" data-value="Red">
-          We are just pawns in a game of chess with no influence over what we build or how we build it     
-           </div>
-        <div class="select-box button2"  data-group="group1" data-value="Yellow">
-          Some challenges exist, but progress is still acceptable.
-                </div>
-        <div class="select-box button3" data-group="group1"  data-value="Green">
-          We are in control of our own destiny! We decide what to build and how to build it.
-                </div>
-      </div>
-
-      <div class="container-section">
-        <h3>Select State</h3>
-        <div class="select-box button1"  data-group="group2" data-value="worse">Getting Worse</div>
-        <div class="select-box button2" data-group="group2"  data-value="stable">Stable</div>
-        <div class="select-box button3" data-group="group2" data-value="improving">Improving</div>
-      </div>
-    </div>
-  
-    <div class="container">
-      <label for="note">Notes:</label>
-      <textarea id="note" style="width: 100%;"></textarea>
-    </div>
-  </div>
-
-  <div class="tab" >
-    <h2 style="text-align: center;">Suitable Process</h2>
-
-    <div class="container">
-      <div class="container-section">
-        <h3>Select Trend</h3>
-        <div class="select-box button1" data-group="group1"  data-value="Red">
-          Our way of working sucks 
-               </div>
-        <div class="select-box button2" data-group="group1" data-value="Yellow">
-          Some challenges exist, but progress is still acceptable.
-                </div>
-        <div class="select-box button3" data-group="group1" data-value="Green">
-          Our way of working fits us perfectly!       
-         !       
-         </div>
-      </div>
-
       <div class="container-section">
         <h3>Select State</h3>
         <div class="select-box button1" data-group="group2" data-value="worse">Getting Worse</div>
@@ -253,62 +23,25 @@
         <div class="select-box button3" data-group="group2" data-value="improving">Improving</div>
       </div>
     </div>
-  
     <div class="container">
       <label for="note">Notes:</label>
-      <textarea id="note" style="width: 100%;"></textarea>
+      <textarea name="note[]" class="note-textarea" style="width: 100%;"></textarea>
     </div>
+    <input type="hidden" name="category[]" value="Fun">
+    <input type="hidden" name="trend[]" class="trend-input">
+    <input type="hidden" name="state[]" class="state-input">
   </div>
 
-  <div class="tab" >
-    <h2 style="text-align: center;">Support</h2>
-    
-    
-    <div class="container">
-      <div class="container-section">
-        <h3>Select Trend</h3>
-        <div class="select-box button1" data-group="group1" data-value="Red">
-          We keep getting stuck because we can't get the support and help that we ask for.  
-               </div>
-        <div class="select-box button2" data-group="group1" data-value="Yellow">
-          Some challenges exist, but progress is still acceptable.
-                </div>
-        <div class="select-box button3" data-group="group1"  data-value="Green">
-          We always get great support and help when we ask for it!
-                 </div>
-      </div>
-
-      <div class="container-section">
-        <h3>Select State</h3>
-        <div class="select-box button1"  data-group="group2"  data-value="worse">Getting Worse</div>
-        <div class="select-box button2" data-group="group2" data-value="stable">Stable</div>
-        <div class="select-box button3" data-group="group2" data-value="improving">Improving</div>
-      </div>
-    </div>
-  
-    <div class="container">
-      <label for="note">Notes:</label>
-      <textarea id="note" style="width: 100%;"></textarea>
-    </div>
-  </div>
-
+  {% comment %} Delivering Value {% endcomment %}
   <div class="tab">
-    <h2 style="text-align: center;">Team Work</h2>
-
+    <h2 style="text-align: center;">Delivering Value</h2>
     <div class="container">
       <div class="container-section">
         <h3>Select Trend</h3>
-        <div class="select-box button1" data-group="group1" data-value="Red">
-          We are a bunch of individuals that neither know nor care about what the other people in the squad are doing
-              </div>
-        <div class="select-box button2" data-group="group1" data-value="Yellow">
-          Some challenges exist, but progress is still acceptable.
-                </div>
-        <div class="select-box button3" data-group="group1" data-value="Green">
-          We are a totally gelled super-team with awesome collaboration!
-                 </div>
+        <div class="select-box button1" data-group="group1" data-value="Red">We deliver crap. We feel ashamed to deliver it. Our stakeholders hate us.</div>
+        <div class="select-box button2" data-group="group1" data-value="Yellow">Some challenges exist, but progress is still acceptable.</div>
+        <div class="select-box button3" data-group="group1" data-value="Green">We deliver great stuff! We're proud of it and our stakeholders are really happy.</div>
       </div>
-
       <div class="container-section">
         <h3>Select State</h3>
         <div class="select-box button1" data-group="group2" data-value="worse">Getting Worse</div>
@@ -316,62 +49,120 @@
         <div class="select-box button3" data-group="group2" data-value="improving">Improving</div>
       </div>
     </div>
-  
     <div class="container">
       <label for="note">Notes:</label>
-      <textarea id="note" style="width: 100%;"></textarea>
+      <textarea name="note[]" class="note-textarea" style="width: 100%;"></textarea>
     </div>
+    <input type="hidden" name="category[]" value="Delivering Value">
+    <input type="hidden" name="trend[]" class="trend-input">
+    <input type="hidden" name="state[]" class="state-input">
   </div>
 
-
-  <div class="tab" >
-    <h2 style="text-align: center;">Health of codebase</h2>
-
+  {% comment %} Easy to Release {% endcomment %}
+  <div class="tab">
+    <h2 style="text-align: center;">Easy to Release</h2>
     <div class="container">
       <div class="container-section">
         <h3>Select Trend</h3>
-        <div class="select-box button1" data-group="group1" data-value="Red">
-          Our code is a pile of dung and technical debt is raging out of control
-                       </div>
-        <div class="select-box button2" data-group="group1" data-value="Yellow">
-          Some challenges exist, but progress is still acceptable.
-                </div>
-        <div class="select-box button3" data-group="group1" data-value="Green">
-          We're proud of the quality of our code! It is clean, easy to read and has great test coverage
-
-
-         </div>
+        <div class="select-box button1" data-group="group1" data-value="Red">Releasing is risky, painful, lots of manual work and takes forever.</div>
+        <div class="select-box button2" data-group="group1" data-value="Yellow">Some challenges exist, but progress is still acceptable.</div>
+        <div class="select-box button3" data-group="group1" data-value="Green">Releasing is simple, safe, painless and mostly automated.</div>
       </div>
-
       <div class="container-section">
         <h3>Select State</h3>
-        <div class="select-box button1" data-group="group2"  data-value="worse">Getting Worse</div>
+        <div class="select-box button1" data-group="group2" data-value="worse">Getting Worse</div>
         <div class="select-box button2" data-group="group2" data-value="stable">Stable</div>
         <div class="select-box button3" data-group="group2" data-value="improving">Improving</div>
       </div>
     </div>
-  
     <div class="container">
       <label for="note">Notes:</label>
-      <textarea id="note" style="width: 100%;"></textarea>
+      <textarea name="note[]" class="note-textarea" style="width: 100%;"></textarea>
     </div>
+    <input type="hidden" name="category[]" value="Easy to Release">
+    <input type="hidden" name="trend[]" class="trend-input">
+    <input type="hidden" name="state[]" class="state-input">
   </div>
 
+  {% comment %} Pawns or Players {% endcomment %}
+  <div class="tab">
+    <h2 style="text-align: center;">Pawns or Players</h2>
+    <div class="container">
+      <div class="container-section">
+        <h3>Select Trend</h3>
+        <div class="select-box button1" data-group="group1" data-value="Red">We are just pawns in a game of chess with no influence over what we build or how we build it.</div>
+        <div class="select-box button2" data-group="group1" data-value="Yellow">Some challenges exist, but progress is still acceptable.</div>
+        <div class="select-box button3" data-group="group1" data-value="Green">We are in control of our own destiny! We decide what to build and how to build it.</div>
+      </div>
+      <div class="container-section">
+        <h3>Select State</h3>
+        <div class="select-box button1" data-group="group2" data-value="worse">Getting Worse</div>
+        <div class="select-box button2" data-group="group2" data-value="stable">Stable</div>
+        <div class="select-box button3" data-group="group2" data-value="improving">Improving</div>
+      </div>
+    </div>
+    <div class="container">
+      <label for="note">Notes:</label>
+      <textarea name="note[]" class="note-textarea" style="width: 100%;"></textarea>
+    </div>
+    <input type="hidden" name="category[]" value="Pawns or Players">
+    <input type="hidden" name="trend[]" class="trend-input">
+    <input type="hidden" name="state[]" class="state-input">
+  </div>
+
+  {% comment %} Health of Codebase {% endcomment %}
+  <div class="tab">
+    <h2 style="text-align: center;">Health of Codebase</h2>
+    <div class="container">
+      <div class="container-section">
+        <h3>Select Trend</h3>
+        <div class="select-box button1" data-group="group1" data-value="Red">Our code is a pile of dung and technical debt is raging out of control.</div>
+        <div class="select-box button2" data-group="group1" data-value="Yellow">Some challenges exist, but progress is still acceptable.</div>
+        <div class="select-box button3" data-group="group1" data-value="Green">We're proud of the quality of our code! It is clean, easy to read, and has great test coverage.</div>
+      </div>
+      <div class="container-section">
+        <h3>Select State</h3>
+        <div class="select-box button1" data-group="group2" data-value="worse">Getting Worse</div>
+        <div class="select-box button2" data-group="group2" data-value="stable">Stable</div>
+        <div class="select-box button3" data-group="group2" data-value="improving">Improving</div>
+      </div>
+    </div>
+    <div class="container">
+      <label for="note">Notes:</label>
+      <textarea name="note[]" class="note-textarea" style="width: 100%;"></textarea>
+    </div>
+    <input type="hidden" name="category[]" value="Health of Codebase">
+    <input type="hidden" name="trend[]" class="trend-input">
+    <input type="hidden" name="state[]" class="state-input">
+  </div>
 
   <div style="overflow:auto;">
     <div style="float:right;">
-      <button type="button" onclick="nextPrev(-1)">Previous</button>
-      <button type="button" onclick="nextPrev(1)">Next</button>
-    </div>
-  </div>
-
-  <div ">
-
-  </div>
-
+       <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+          <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+        </div>
+      </div>
+      
+      <button type="submit">Submit Vote</button>
+  
 </form>
 
-
 <script src="{% static 'healthcheck/voting.js' %}"></script>
+<script>
+document.querySelectorAll('.select-box').forEach(box => {
+  box.addEventListener('click', () => {
+    const group = box.getAttribute('data-group');
+    const value = box.getAttribute('data-value');
+    const parentTab = box.closest('.tab');
+    parentTab.querySelectorAll(`.select-box[data-group="${group}"]`).forEach(b => b.classList.remove('selected'));
+    box.classList.add('selected');
+    if (group === 'group1') {
+      parentTab.querySelector('.trend-input').value = value;
+    } else if (group === 'group2') {
+      parentTab.querySelector('.state-input').value = value;
+    }
+  });
+});
+</script>
 
 {% endblock %}

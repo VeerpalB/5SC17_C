@@ -1,6 +1,4 @@
 let currentTab = 0;
-let selections = {};
-
 showTab(currentTab);
 
 function showTab(n) {
@@ -12,8 +10,8 @@ function showTab(n) {
     tabs[n].style.display = "block";
   }
 
-  const prevBtn = document.querySelector('button[onclick="nextPrev(-1)"]');
-  const nextBtn = document.querySelector('button[onclick="nextPrev(1)"]');
+  const prevBtn = document.querySelector('#prevBtn');
+  const nextBtn = document.querySelector('#nextBtn');
 
   if (prevBtn) prevBtn.style.display = n === 0 ? "none" : "inline";
   if (nextBtn) nextBtn.innerHTML = (n === tabs.length - 1) ? "Submit" : "Next";
@@ -23,9 +21,8 @@ function nextPrev(n) {
   const tabs = document.getElementsByClassName("tab");
 
   if ((currentTab + n) >= tabs.length) {
-    localStorage.setItem("surveySelections", JSON.stringify(selections));
-    alert("We are now saving your selections. View your progress in the next page.");
-    window.location.href = "/progress";  
+    // Final submission
+    document.querySelector('form').submit();
     return false;
   }
 
@@ -34,27 +31,27 @@ function nextPrev(n) {
   showTab(currentTab);
 }
 
-
-
+// Track selections for trend/state
 document.querySelectorAll('.select-box').forEach(box => {
   box.addEventListener('click', function () {
     const group = this.getAttribute('data-group');
     const value = this.getAttribute('data-value');
+    const parentTab = this.closest('.tab');
 
-    document.querySelectorAll(`.select-box[data-group="${group}"]`).forEach(el => {
+    // Deselect siblings
+    parentTab.querySelectorAll(`.select-box[data-group="${group}"]`).forEach(el => {
       el.classList.remove('selected');
     });
 
-    let selections = JSON.parse(localStorage.getItem('userSelections')) || {};
+    this.classList.add('selected');
 
-    if (!selections[group]) {
-      selections[group] = { Red: 0, Yellow: 0, Green: 0 };
+    // Set hidden input
+    if (group === 'group1') {
+      const trendInput = parentTab.querySelector('.trend-input');
+      if (trendInput) trendInput.value = value;
+    } else if (group === 'group2') {
+      const stateInput = parentTab.querySelector('.state-input');
+      if (stateInput) stateInput.value = value;
     }
-
-    selections[group][value] += 1;
-
-    localStorage.setItem('userSelections', JSON.stringify(selections));
-    console.log('Selection saved:', selections);
-
   });
 });
