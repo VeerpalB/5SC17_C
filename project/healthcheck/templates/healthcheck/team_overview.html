@@ -51,6 +51,9 @@
     
 </div>
 
+{% endblock content %}
+
+
 {{ trend_labels|json_script:"trend-labels" }}
 {{ trend_totals|json_script:"trend-totals" }}
 {{ state_labels|json_script:"state-labels" }}
@@ -107,3 +110,4 @@ window.onload = function () {
 {% endblock %}
 
   
+

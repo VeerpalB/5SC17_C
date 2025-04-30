@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from .models import Vote
 from django.contrib import messages
+from django.utils import timezone
 
 def progress_view(request):
     if request.method == 'POST':
@@ -69,6 +70,28 @@ def team_overview(request):
     return render(request, 'healthcheck/team_overview.html', context)
 
 
+def progress_view(request):
+    if request.method == 'POST':
+        categories = request.POST.getlist('category[]')
+        trends = request.POST.getlist('trend[]')
+        states = request.POST.getlist('state[]')
+        notes = request.POST.getlist('note[]')
+        user = request.user
+
+        for i in range(len(categories)):
+            Vote.objects.create(
+                user=user,
+                team=user.profile.team,  
+                category=categories[i],
+                trend=trends[i],
+                state=states[i],
+                note=notes[i],
+                submitted_at=timezone.now()
+            )
+
+        messages.success(request, "Your votes were submitted successfully!")
+
+    return render(request, 'healthcheck/progress.html')
 
 
 def home(request):
