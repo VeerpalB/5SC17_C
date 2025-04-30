@@ -1,0 +1,48 @@
+<!--
+Author: Nadia Islam
+File: welcome.html
+Description: Senior manager homepage for displaying department and team level health check summaries.
+-->
+{# Extends the main base template to inherit shared layout (e.g. header, navbar) #}
+{% extends "main.html" %}
+
+{% block content %}
+<!-- Page content container with vertical padding and light background gradient -->
+<div style="background: linear-gradient(to bottom, #f9f9f9, #ffffff); padding: 40px 20px; min-height: 80vh; text-align: center;">
+
+    <!-- Welcome heading -->
+    <h2 style="margin-bottom: 20px;">Welcome to the Health Check System</h2>
+
+    <!-- Brief introduction about the platform's purpose -->
+    <p style="max-width: 800px; margin: 0 auto 40px; font-size: 16px;">
+        Designed to help teams and departments track progress and maintain high standards.
+        This platform is built for you to view the overall results for all teams or departments from any sessions taken.
+    </p>
+
+    <!-- Container for navigation cards that link to department and team overviews -->
+    <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap;">
+
+        <!-- Link to department overview page -->
+        <a href="{% url 'department_overview' %}" style="text-decoration: none; color: inherit;">
+            <div style="background: white; border: 1px solid #ddd; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 20px; width: 250px; border-radius: 8px; transition: transform 0.2s;">
+                <h3 style="margin-bottom: 10px;">Department overview</h3>
+                <p style="font-size: 14px;">
+                    Find out about Department trends, emerging challenges which help improve decision-making.
+                </p>
+            </div>
+        </a>
+
+        <!-- Link to team overview page (for senior managers) -->
+        <a href="{% url 'senior_team_overview' %}" style="text-decoration: none; color: inherit;">
+            <div style="background: white; border: 1px solid #ddd; box-shadow: 0 2px 4px rgba(0,0,0,0.1); padding: 20px; width: 250px; border-radius: 8px; transition: transform 0.2s;">
+                <h3 style="margin-bottom: 10px;">Team overview</h3>
+                <p style="font-size: 14px;">
+                    Find out about team trends, help improve efficiency, drive and innovation.
+                </p>
+            </div>
+        </a>
+
+    </div>
+
+</div>
+{% endblock %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
-from django.contrib.auth.forms import UserCreationForm
+#  from django.contrib.auth.forms import CustomUserCreationForm
 from django.urls import reverse
 from django.contrib.auth import authenticate, login as auth_login
 from django.db.models import Count
@@ -190,3 +190,41 @@ def login(request):
 
 
 
+
+def welcome_page(request): #Nadia's task
+    return render(request, 'healthcheck/welcome.html')
+
+
+
+def dept_overview(request): #Nadia Islam
+    department = request.GET.get('department', 'Sky Design')
+    date = request.GET.get('date', '2024-12-01')
+
+    
+    color_votes = [5, 10, 15]     # Red, Yellow, Green votes
+    trend_votes = [4, 9, 14]      # Getting worse, Stable, Improving
+
+    context = {
+        'department': department,
+        'date': date,
+        'color_votes': color_votes,
+        'trend_votes': trend_votes,
+    }
+    return render(request, 'healthcheck/dept_overview.html', context)
+
+def senior_team_overview(request): #Nadia Islam
+    team = request.GET.get('team', 'T1')
+    date = request.GET.get('date', '2024-12-01')
+
+    
+    color_votes = [5, 10, 15]  # Red, Yellow, Green
+    trend_votes = [4, 9, 14]   # Getting worse, Stable, Improving
+
+    context = {
+        'team': team,
+        'date': date,
+        'color_votes': color_votes,
+        'trend_votes': trend_votes,
+    }
+
+    return render(request, 'healthcheck/senior_team_overview.html', context)
