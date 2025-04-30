@@ -32,6 +32,17 @@ def session(request):
 def dashboard(request):
     return render(request, 'healthcheck/dashboard.html')
 
+def overview_home(request):
+    return render(request, 'healthcheck/overview_home.html')
+
+
+def department_overview(request):
+    return render(request, 'healthcheck/department_overview.html')
+
+
+def team_overview(request):
+    return render(request, 'healthcheck/team_overview.html')
+
 def forgotten_password(request):
     return render(request, 'healthcheck/forgotten_password.html')
 
