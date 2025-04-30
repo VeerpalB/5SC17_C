@@ -102,16 +102,16 @@ def login(request):
 
 
 
-def welcome_page(request): #Nadia's task
+def welcome_page(request): #Author: Nadia Islam
     return render(request, 'healthcheck/welcome.html')
 
 
 
-def dept_overview(request):
+def dept_overview(request):#Author: Nadia Islam
     department = request.GET.get('department', 'Sky Design')
     date = request.GET.get('date', '2024-12-01')
 
-    #  fetch real data based on department + date
+    
     color_votes = [5, 9, 14]     # Red, Yellow, Green votes
     trend_votes = [3, 8, 13]      # Getting worse, Stable, Improving
 
@@ -124,11 +124,11 @@ def dept_overview(request):
     return render(request, 'healthcheck/dept_overview.html', context)
 
     
-def senior_team_overview(request):
+def senior_team_overview(request):#Author: Nadia Islam
     team = request.GET.get('team', 'T1')
     date = request.GET.get('date', '2024-12-01')
 
-    # DUMMY DATA — replace with real queries later
+    
     color_votes = [5, 10, 15]  # Red, Yellow, Green
     trend_votes = [4, 9, 14]   # Getting worse, Stable, Improving
 

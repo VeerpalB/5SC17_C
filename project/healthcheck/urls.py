@@ -18,13 +18,9 @@ urlpatterns = [
     path('overview/home', views.overview_home, name='overview_home'),
     path('department/overview', views.department_overview, name='department_overview'),
     path('overview/team', views.team_overview, name='team_overview'),
-    
-   
-
-
     path('navbar/', views.navbar),
-    path('welcome/', views.welcome_page, name='welcome'), #Nadia
-    path('department-overview/', views.dept_overview, name='department_overview'),
-    path('senior/team-overview/', views.senior_team_overview, name='senior_team_overview'),
+    path('welcome/', views.welcome_page, name='welcome'), #Author: Nadia Islam
+    path('department-overview/', views.dept_overview, name='department_overview'), #Author: Nadia Islam
+    path('senior/team-overview/', views.senior_team_overview, name='senior_team_overview'), #Author: Nadia Islam
 
 ]
