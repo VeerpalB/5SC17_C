@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login as auth_login
+from django.contrib import messages
 
 
 
@@ -38,7 +39,23 @@ def dashboard(request):
     return render(request, 'healthcheck/dashboard.html')
 >>>>>>> 514e73cac4ef398b1b035e029ece1dbde4cdb73f
 
+def overview_home(request):
+    return render(request, 'healthcheck/overview_home.html')
+
+
+def department_overview(request):
+    return render(request, 'healthcheck/department_overview.html')
+
+
+def team_overview(request):
+    return render(request, 'healthcheck/team_overview.html')
+
 def forgotten_password(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        messages.success(request, f"An email has been sent to {email} with password reset instructions.")
+        return redirect('forgotten_password_confirmation')
+
     return render(request, 'healthcheck/forgotten_password.html')
 
 def forgotten_password_confirmation(request):
