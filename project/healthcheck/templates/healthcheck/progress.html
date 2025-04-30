@@ -1,24 +1,21 @@
-{%extends 'main.html'%}
+{% extends 'main.html' %}
 {% load static %}
-{% block content%}
+
+{% block content %}
+<!-- <div>
+    <canvas id="myChart"></canvas>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   -->
+   <div class = main>
 
 
-<body></body>
-
-<div class="box">
-    <h5>Click on the buttons below to update your progress:</h5>
-
-
-
-
-
-
-
-
-
+   <div>
+    <canvas id="myChart" width="400" height="200"></canvas>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="{% static 'healthcheck/progress.js' %}"></script>
 </div>
-
-
-
-
-{% endblock content %}
+{% endblock %}

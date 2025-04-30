@@ -12,7 +12,9 @@ def profile(request):
     return render(request, 'healthcheck/profile.html')
 
 def progress(request):
+   
     return render(request, 'healthcheck/progress.html')
+    
 
 def help(request):
     return render(request, 'healthcheck/help.html')
@@ -23,10 +25,11 @@ def logout(request):
 def voting(request):
     return render(request, 'healthcheck/voting.html')
 
+def edit(request):
+    return render(request, 'healthcheck/edit.html')
+
 
 def session(request):
-    
-    
     return render(request, 'healthcheck/session.html')  
 
 def dashboard(request):
