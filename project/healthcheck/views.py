@@ -57,11 +57,11 @@ def dept_overview(request):
     return render(request, 'healthcheck/dept_overview.html', context)
 
     
-def team_overview(request):
+def senior_team_overview(request):
     team = request.GET.get('team', 'T1')
     date = request.GET.get('date', '2024-12-01')
 
-    # DUMMY DATA — later replace with real Vote queries
+    # DUMMY DATA — replace with real queries later
     color_votes = [5, 10, 15]  # Red, Yellow, Green
     trend_votes = [4, 9, 14]   # Getting worse, Stable, Improving
 
@@ -72,4 +72,4 @@ def team_overview(request):
         'trend_votes': trend_votes,
     }
 
-    return render(request, 'healthcheck/team_overview.html', context)
+    return render(request, 'healthcheck/senior_team_overview.html', context)
