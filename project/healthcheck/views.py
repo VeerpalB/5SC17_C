@@ -3,8 +3,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login as auth_login
-
-
+from django.db.models import Count
+from .models import Vote
 
 
 
@@ -96,6 +96,15 @@ def login(request):
     
 
 
+
+def progress_view(request):
+    vote_data = (
+        Vote.objects
+        .values('status__statusColor')
+        .annotate(count=Count('id'))
+    )
+
+    return render(request, 'progress.html', {'vote_data': list(vote_data)})
    
 
 

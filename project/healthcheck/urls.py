@@ -12,7 +12,7 @@ urlpatterns = [
     path('logout', views.logout, name='logout_name'),
     path('voting', views.voting, name='voting_name'),
 
-    path('editsession', views.edit, name='edit_name'),
+    path('session', views.edit, name='sessions_name'),
 
 
     path('login/', views.login, name='login'),
@@ -22,7 +22,7 @@ urlpatterns = [
     path('overview/home', views.overview_home, name='overview_home'),
     path('department/overview', views.department_overview, name='department_overview'),
     path('overview/team', views.team_overview, name='team_overview'),
-    
+    path('dashboard/', views.dashboard, name='dashboard'),
    
 
 
