@@ -38,7 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'healthcheck.apps.HealthcheckConfig', 
+<<<<<<< HEAD
     
+=======
+   
+>>>>>>> 514e73cac4ef398b1b035e029ece1dbde4cdb73f
     
 ]
 
@@ -122,6 +126,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIR = [
+    BASE_DIR / 'static'
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
