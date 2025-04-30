@@ -3,6 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login as auth_login
+from django.contrib import messages
 
 
 
