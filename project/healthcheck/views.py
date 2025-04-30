@@ -44,6 +44,11 @@ def team_overview(request):
     return render(request, 'healthcheck/team_overview.html')
 
 def forgotten_password(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        print("Password reset requested for:", email)
+        return redirect('forgotten_password_confirmation')
+
     return render(request, 'healthcheck/forgotten_password.html')
 
 def forgotten_password_confirmation(request):
