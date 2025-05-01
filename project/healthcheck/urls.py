@@ -4,6 +4,7 @@ from . import views
 
 
 urlpatterns = [
+    path('', views.login, name='root_redirect'),
     path('user', views.home, name='home_name'),
     path('profile/', views.profile, name='profile_name'),
     path('progress/', views.progress_view, name='progress_name'),
