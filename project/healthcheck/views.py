@@ -126,10 +126,12 @@ def signup(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            user_profile = UserProfile.objects.create(
-                user=user,
-                role=form.cleaned_data['role']
-            )
+            user.userprofile.role = form.cleaned_data['role']
+            user.userprofile.save()
+            # user_profile = UserProfile.objects.create(
+            #     user=user,
+            #     role=form.cleaned_data['role']
+            # )
             # user.email = form.cleaned_data['email']
             # user.first_name = form.cleaned_data['first_name']
             # user.last_name = form.cleaned_data['last_name']
