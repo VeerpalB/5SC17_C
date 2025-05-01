@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 
 from .forms import CustomUserCreationForm
 
-#  from django.contrib.auth.forms import CustomUserCreationForm
+from django.contrib.auth.forms import CustomUserCreationForm
 
 from django.urls import reverse
 from django.contrib.auth import authenticate, login as auth_login
@@ -156,15 +156,15 @@ def forgotten_password_confirmation(request):
 def navbar(request):
     return render(request, 'healthcheck/navbar.html')
 
-# def signup(request): 
-#     if request.method == 'POST':
-#         form = CustomUserCreationForm(request.POST)
-#         if form.is_valid():
-#             user = form.save(commit=False)
-#             user.email = form.cleaned_data['email']
-#             user.first_name = form.cleaned_data['first_name']
-#             user.last_name = form.cleaned_data['last_name']
-#             user.save()
+def signup(request): 
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.email = form.cleaned_data['email']
+            user.first_name = form.cleaned_data['first_name']
+            user.last_name = form.cleaned_data['last_name']
+            user.save()
             
 
             
@@ -197,12 +197,12 @@ def navbar(request):
     else:
         form = CustomUserCreationForm()
 
-#             role = form.cleaned_data['role']
-#             username = form.cleaned_data.get('username')
-#             messages.success(request, f'Account created for {username}!')
-#             return redirect('healthcheck_home')
-#     else:
-#         form = CustomUserCreationForm()
+            role = form.cleaned_data['role']
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account created for {username}!')
+            return redirect('healthcheck_home')
+    else:
+        form = CustomUserCreationForm()
 
 
     return render(request, 'healthcheck/signup.html', {'form': form})
