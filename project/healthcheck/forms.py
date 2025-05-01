@@ -6,7 +6,7 @@ from .models import UserProfile
 ROLE_CHOICES = [
     ('engineer', 'Engineer'),
     ('teamleader', 'Team Leader'),
-    ('departmentleader', 'Department Leader'),
+    ('department_leader', 'Department Leader'),
     ('seniormanager', 'Senior Manager'),
     ('admin', 'Admin'),
 ]

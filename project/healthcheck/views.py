@@ -125,22 +125,26 @@ def signup(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.email = form.cleaned_data['email']
-            user.first_name = form.cleaned_data['first_name']
-            user.last_name = form.cleaned_data['last_name']
-            user.save()
+            user = form.save()
+            user_profile = UserProfile.objects.create(
+                user=user,
+                role=form.cleaned_data['role']
+            )
+            # user.email = form.cleaned_data['email']
+            # user.first_name = form.cleaned_data['first_name']
+            # user.last_name = form.cleaned_data['last_name']
+            # user.save()
             
 
             
             # Save role to user profile
-            role = form.cleaned_data['role']
-            UserProfile.objects.create(user=user, role=role)
+            # role = form.cleaned_data['role']
+            # UserProfile.objects.create(user=user, role=role)
             # user_profile, created = UserProfile.objects.get_or_create(user=user)
             # user_profile.role = role
             # user_profile.save()
 
-            username = form.cleaned_data.get('username')
+            # username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}. You can now log in.')
             return redirect('login')
 

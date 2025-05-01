@@ -87,17 +87,18 @@
 
     <form method="POST">
         {% csrf_token %}
-        <input type="text" id="fname" name="fname" placeholder="Enter Your First Name">
+        {{ form.as_p }}
+        <!-- <input type="text" id="fname" name="fname" placeholder="Enter Your First Name">
         <input type="text" id="sname" name="sname" placeholder="Enter Your Surname">
         <input type="email" id="email" name="email" placeholder="Enter Your Email">
         <input type="text" id="username" name="username" placeholder="Enter Your Username">
-        <input type="password" id="password" name="password" placeholder="Enter Your Password">
+        <input type="password" id="password" name="password" placeholder="Enter Your Password"> -->
 
         <select id="roles" name="roles">
             <option value="" disabled selected>Select Your Role</option>
             <option value="engineer">Engineer</option>
             <option value="teamleader">Team Leader</option>
-            <option value="departmentleader">Department Leader</option>
+            <option value="department_leader">Department Leader</option>
             <option value="seniormanager">Senior Manager</option>
             <option value="admin">Admin</option>
         </select>
