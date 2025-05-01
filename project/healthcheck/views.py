@@ -126,8 +126,11 @@ def signup(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            user.userprofile.role = form.cleaned_data['role']
-            user.userprofile.save()
+            role = request.POST.get('roles')
+            # user.userprofile.role = form.cleaned_data['role']
+            UserProfile.objects.create(user=user, role=role)
+            # user.userprofile.save()
+            return redirect('login')
             # user_profile = UserProfile.objects.create(
             #     user=user,
             #     role=form.cleaned_data['role']
@@ -141,14 +144,14 @@ def signup(request):
             
             # Save role to user profile
             # role = form.cleaned_data['role']
-            # UserProfile.objects.create(user=user, role=role)
+            
             # user_profile, created = UserProfile.objects.get_or_create(user=user)
             # user_profile.role = role
             # user_profile.save()
 
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}. You can now log in.')
-            return redirect('login')
+            
 
 
     else:
@@ -166,7 +169,7 @@ def login(request):
         
         if user is not None:
             auth_login(request, user)
-            messages.success(request, f'Welcome back, {username}!')
+            # messages.success(request, f'Welcome back, {username}!')
 
             # Retrieve user's role
             try:
@@ -176,20 +179,21 @@ def login(request):
 
 
             # Role-based redirection
-            if role in ['teamleader', 'engineer']:
-                return redirect('user')
 
-            elif role == 'admin':
-                return redirect('dashboard')
-
+            if role in ['engineer', 'teamleader']:
+                return redirect('home')
+                
             elif role == 'department_leader':
-                return redirect('overviewhome')
-
+                return redirect('overview_home')
+                
             elif role == 'seniormanager':
                 return redirect('welcome')
-
+                
+            elif role == 'admin':
+                return redirect('dashboard')
+                
             else:
-                return redirect('home')
+                return redirect('home')  # fallback
 
         else:
             messages.error(request, 'Invalid username or password.')
