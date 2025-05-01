@@ -164,10 +164,10 @@ def signup(request):
             else:
                 return redirect('home') 
 
-    else:
-        form = CustomUserCreationForm()
+        else:
+            form = CustomUserCreationForm()
 
-return render(request, 'healthcheck/signup.html', {'form': form})
+    return render(request, 'healthcheck/signup.html', {'form': form})
 
 
 def login(request):
