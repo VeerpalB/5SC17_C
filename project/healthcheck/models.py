@@ -39,11 +39,15 @@ class UserProfile(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.role}"
 
-# @receiver(post_save, sender=User)
-# def create_user_profile(sender, instance, created, **kwargs):
-#     if created:
-#         default_role = 'engineer' 
-#         UserProfile.objects.create(user=instance, role=default_role)
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        UserProfile.objects.create(user=instance, role='engineer')
+    else:
+        instance.userprofile.save()
+
+      
+      
 
 
 @receiver(post_save, sender=User)

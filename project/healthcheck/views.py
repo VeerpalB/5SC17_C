@@ -64,7 +64,7 @@ def progress_view(request):
         for i in range(len(categories)):
             Vote.objects.create(
                 user=user,
-                team=user.profile.team,  
+                team=user.userprofile.team,  
                 category=categories[i],
                 trend=trends[i],
                 state=states[i],
@@ -126,10 +126,20 @@ def signup(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            role = request.POST.get('roles')
+            
+            if created:
+                user_profile.role = role
+                user_profile.save()
+            # print("Accessing user.userprofile now will break if not yet created.")
+            role = request.POST.get('role')
+            user_profile = UserProfile.objects.create(user=user, role=role)
+            # UserProfile.objects.create(user=user, role=role)
             # user.userprofile.role = form.cleaned_data['role']
-            UserProfile.objects.create(user=user, role=role)
+            # UserProfile.objects.create(user=user, role=role)
+            # user.userprofile.role = role
             # user.userprofile.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Account created for {username}. You can now log in.')
             return redirect('login')
             # user_profile = UserProfile.objects.create(
             #     user=user,
@@ -149,8 +159,8 @@ def signup(request):
             # user_profile.role = role
             # user_profile.save()
 
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}. You can now log in.')
+            # username = form.cleaned_data.get('username')
+            
             
 
 

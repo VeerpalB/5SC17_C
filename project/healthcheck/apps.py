@@ -5,5 +5,5 @@ class HealthcheckConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'healthcheck'
     
-    def ready(self):
-        import healthcheck.signals
+#     def ready(self):
+#         import healthcheck.signals
