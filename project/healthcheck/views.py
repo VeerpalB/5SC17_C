@@ -84,11 +84,6 @@ def home(request):
 def profile(request):           
     return render(request, 'healthcheck/profile.html')
 
-def progress(request):
-   
-    return render(request, 'healthcheck/progress.html')
-    
-
 def help(request):
     return render(request, 'healthcheck/help.html')
 
@@ -164,10 +159,11 @@ def signup(request):
             else:
                 return redirect('home') 
 
-        else:
-            form = CustomUserCreationForm()
+    else:
+        form = CustomUserCreationForm()
 
-return render(request, 'healthcheck/signup.html', {'form': form})
+    
+    return render(request, 'healthcheck/signup.html', {'form': form})
 
 
 def login(request):
@@ -207,7 +203,7 @@ def login(request):
             messages.error(request, 'Invalid username or password.')
 
             
-return render(request, "healthcheck/login.html")
+    return render(request, "healthcheck/login.html")
     
 
 def welcome_page(request): #Nadia's task
