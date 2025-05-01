@@ -6,6 +6,9 @@
 <form method="post" action="{% url 'progress_name' %}">
   {% csrf_token %}
 
+
+
+
   {% comment %} Fun {% endcomment %}
   <div class="tab">
     <h2 style="text-align: center;">Fun</h2>
@@ -260,7 +263,6 @@
     <input type="hidden" name="category[]" value="Learning">
     <input type="hidden" name="trend[]" class="trend-input">
     <input type="hidden" name="state[]" class="state-input">
-    <button type="submit" id="submitBtn">Submit Vote</button>
   </div>
   
 

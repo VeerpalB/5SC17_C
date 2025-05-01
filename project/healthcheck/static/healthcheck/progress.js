@@ -1,31 +1,39 @@
-const raw = localStorage.getItem('userSelections');
-if (raw) {
-  const data = JSON.parse(raw);
-  const group = 'group1'; 
 
-  if (data[group]) {
-    const labels = Object.keys(data[group]);       
-    const values = Object.values(data[group]);     
+const trendLabels = JSON.parse(document.getElementById('user-trend-labels').textContent);
+const trendData = JSON.parse(document.getElementById('user-trend-data').textContent);
+const stateLabels = JSON.parse(document.getElementById('user-state-labels').textContent);
+const stateData = JSON.parse(document.getElementById('user-state-data').textContent);
 
-    const ctx = document.getElementById('myChart').getContext('2d');
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: 'Your Submission',
-          data: values,
-          backgroundColor: ['#FF6384', '#FFCE56', '#4BC0C0'],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: { beginAtZero: true }
-        }
-      }
-    });
+new Chart(document.getElementById('userTrendChart').getContext('2d'), {
+  type: 'bar',
+  data: {
+    labels: trendLabels,
+    datasets: [{
+      label: 'Your Trend Votes',
+      data: trendData,
+      backgroundColor: ['red', 'gold', 'green']
+    }]
+  },
+  options: {
+    responsive: true,
+    scales: { y: { beginAtZero: true } }
   }
-}
+});
+
+new Chart(document.getElementById('userStateChart').getContext('2d'), {
+  type: 'bar',
+  data: {
+    labels: stateLabels,
+    datasets: [{
+      label: 'Your State Votes',
+      data: stateData,
+      backgroundColor: ['red', 'gold', 'green']
+    }]
+  },
+  options: {
+    responsive: true,
+    scales: { y: { beginAtZero: true } }
+  }
+});
 
 

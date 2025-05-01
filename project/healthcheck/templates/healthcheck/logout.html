@@ -1,26 +1,12 @@
 
 
 {% block content%}
+{% load static %}
 
+<link rel="stylesheet" href="{% static 'healthcheck/style.css' %}">
 
-<body>
-
-<div class="yes">
-
-  </div>
-</body>
-
-
-
-
-
-
-
-
-
-</div>
-
-
-
-
+  <body>
+    <div class="main" ><a href="{% url 'login' %}" >Click here to log back in again</a>
+  </body>
+    </div>
 {% endblock content %}

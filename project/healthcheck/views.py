@@ -6,7 +6,6 @@ from django.contrib.auth import authenticate, login as auth_login
 from django.db.models import Count
 from django.contrib import messages
 from .models import UserProfile
-
 from django.shortcuts import render, redirect
 from .models import Vote
 from django.contrib import messages
@@ -53,28 +52,32 @@ def team_overview(request):
     return render(request, 'healthcheck/team_overview.html', context)
 
 
-def progress_view(request):
-    if request.method == 'POST':
-        categories = request.POST.getlist('category[]')
-        trends = request.POST.getlist('trend[]')
-        states = request.POST.getlist('state[]')
-        notes = request.POST.getlist('note[]')
-        user = request.user
 
-        for i in range(len(categories)):
-            Vote.objects.create(
-                user=user,
-                team=user.userprofile.team,  
-                category=categories[i],
-                trend=trends[i],
-                state=states[i],
-                note=notes[i],
-                submitted_at=timezone.now()
-            )
 
-        messages.success(request, "Your votes were submitted successfully!")
+def progress_overview(request):
+    team = request.GET.get('team')
+    category = request.GET.get('category')
 
-    return render(request, 'healthcheck/progress.html')
+    votes = Vote.objects.all()
+
+    if team:
+        votes = votes.filter(team=team)
+    if category:
+        votes = votes.filter(category=category)
+
+    trend_labels = ["Red", "Yellow", "Green"]
+    state_labels = ["worse", "stable", "improving"]
+
+    trend_totals = [votes.filter(trend=t).count() for t in trend_labels]
+    state_totals = [votes.filter(state=s).count() for s in state_labels]
+
+    context = {
+        'trend_labels': trend_labels,
+        'trend_totals': trend_totals,
+        'state_labels': state_labels,
+        'state_totals': state_totals,
+    }
+    return render(request, 'healthcheck/progress.html', context)
 
 
 
@@ -104,8 +107,8 @@ def session(request):
 def dashboard(request):
     return render(request, 'healthcheck/dashboard.html')
 
-def overviewhome(request):
-    return render(request, 'healthcheck/overviewhome.html')
+def overview_home(request):
+    return render(request, 'healthcheck/overview_home.html')
 
 def forgotten_password(request): # Done by Veerpal
     if request.method == 'POST':
@@ -205,7 +208,7 @@ def login(request): # Done by Veerpal
                 return redirect('home')
 
             elif role == 'department_leader':
-                return redirect('overview/home')
+                return redirect('overview_home')
 
             elif role == 'seniormanager':
                 return redirect('welcome')

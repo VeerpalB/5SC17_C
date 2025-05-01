@@ -2,26 +2,73 @@
 {% load static %}
 
 {% block content %}
+<div class="progress-container">
+
+  {% if submitted %}
+    <div class="submission-message">
+      <h2 style="text-align: center;">Your submission has been successful</h2>
+
+      <div>
+        <h3>Your Trend Votes:</h3>
+        <canvas id="userTrendChart" width="400" height="300"></canvas>
+
+        <h3>Your State Votes:</h3>
+        <canvas id="userStateChart" width="400" height="300"></canvas>
+      </div>
+
+      <!-- Pass vote data safely to JavaScript -->
+      {{ user_trend_labels|json_script:"user-trend-labels" }}
+      {{ user_trend_data|json_script:"user-trend-data" }}
+      {{ user_state_labels|json_script:"user-state-labels" }}
+      {{ user_state_data|json_script:"user-state-data" }}
+    </div>
+  {% endif %}
+
+</div>
 
 {% if submitted %}
-  <div class="submission-message">
-    <h2 style="text-align: center;">Your submission has been successful</h2>
-
-    <div>
-      <h3>View your submission:</h3>
-      <canvas id="userTrendChart"></canvas>
-      <canvas id="userStateChart"></canvas>
-    </div>
-  </div>
-
-  {{ user_trend_labels|json_script:"user-trend-labels" }}
-  {{ user_trend_data|json_script:"user-trend-data" }}
-  {{ user_state_labels|json_script:"user-state-labels" }}
-  {{ user_state_data|json_script:"user-state-data" }}
-{% endif %}
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+  const trendLabels = JSON.parse(document.getElementById('user-trend-labels').textContent);
+  const trendData = JSON.parse(document.getElementById('user-trend-data').textContent);
+  const stateLabels = JSON.parse(document.getElementById('user-state-labels').textContent);
+  const stateData = JSON.parse(document.getElementById('user-state-data').textContent);
 
+  new Chart(document.getElementById('userTrendChart').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: trendLabels,
+      datasets: [{
+        label: 'Your Trend Votes',
+        data: trendData,
+        backgroundColor: ['red', 'gold', 'green']
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
+
+  new Chart(document.getElementById('userStateChart').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: stateLabels,
+      datasets: [{
+        label: 'Your State Votes',
+        data: stateData,
+        backgroundColor: ['red', 'gold', 'green']
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: { beginAtZero: true }
+      }
+    }
+  });
 </script>
+{% endif %}
 {% endblock %}
