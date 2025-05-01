@@ -135,31 +135,17 @@ def signup(request):
             
             # Save role to user profile
             role = form.cleaned_data['role']
-            user_profile, created = UserProfile.objects.get_or_create(user=user)
-            user_profile.role = role
-            user_profile.save()
+            UserProfile.objects.create(user=user, role=role)
+            # user_profile, created = UserProfile.objects.get_or_create(user=user)
+            # user_profile.role = role
+            # user_profile.save()
 
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}!')
+            messages.success(request, f'Account created for {username}. You can now log in.')
+            return redirect('login')
 
-            
-    #         # Role-based redirection
-    #         if role in ['teamleader', 'engineer']:
-    #             return redirect('user')
-            
-    #         elif role == 'admin':
-    #             return redirect('dashboard') 
 
-    #         elif role == 'department_leader':
-    #             return redirect('overviewhome') 
-
-    #         elif role == 'seniormanager':
-    #             return redirect('welcome')  
-
-    #         else:
-    #             return redirect('home') 
-
-     else:
+    else:
         form = CustomUserCreationForm()
 
     
