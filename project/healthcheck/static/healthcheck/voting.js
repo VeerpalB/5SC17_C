@@ -21,7 +21,6 @@ function nextPrev(n) {
   const tabs = document.getElementsByClassName("tab");
 
   if ((currentTab + n) >= tabs.length) {
-    // Final submission
     document.querySelector('form').submit();
     return false;
   }
@@ -31,27 +30,17 @@ function nextPrev(n) {
   showTab(currentTab);
 }
 
-// Track selections for trend/state
 document.querySelectorAll('.select-box').forEach(box => {
-  box.addEventListener('click', function () {
-    const group = this.getAttribute('data-group');
-    const value = this.getAttribute('data-value');
-    const parentTab = this.closest('.tab');
-
-    // Deselect siblings
-    parentTab.querySelectorAll(`.select-box[data-group="${group}"]`).forEach(el => {
-      el.classList.remove('selected');
-    });
-
-    this.classList.add('selected');
-
-    // Set hidden input
+  box.addEventListener('click', () => {
+    const group = box.getAttribute('data-group');
+    const value = box.getAttribute('data-value');
+    const parentTab = box.closest('.tab');
+    parentTab.querySelectorAll(`.select-box[data-group="${group}"]`).forEach(b => b.classList.remove('selected'));
+    box.classList.add('selected');
     if (group === 'group1') {
-      const trendInput = parentTab.querySelector('.trend-input');
-      if (trendInput) trendInput.value = value;
+      parentTab.querySelector('.trend-input').value = value;
     } else if (group === 'group2') {
-      const stateInput = parentTab.querySelector('.state-input');
-      if (stateInput) stateInput.value = value;
+      parentTab.querySelector('.state-input').value = value;
     }
   });
 });

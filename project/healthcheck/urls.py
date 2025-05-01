@@ -7,14 +7,11 @@ urlpatterns = [
     path('', views.login, name='root_redirect'),
     path('user/', views.home, name='home'),
     path('profile/', views.profile, name='profile'),
-    path('progress/', views.progress_view, name='progress'),
+    path('progress/', views.progress_view, name='progress_name'),
     path('help/', views.help, name='help'),
     path('logout/', views.logout_view, name='logout'),
-    path('voting/', views.voting_view, name='voting'),
-
-    path('session/', views.edit, name='session'),
-
-
+    path('voting/', views.voting, name='voting'),
+    path('session/', views.session, name='session'),
     path('login/', views.login, name='login'),
     path('forgotten_password/', views.forgotten_password, name='forgotten_password'),
     path('forgotten_password_confirmation/', views.forgotten_password_confirmation, name='forgotten_password_confirmation'),

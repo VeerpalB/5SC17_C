@@ -90,7 +90,7 @@ def help(request):
 def logout_view(request):
     return render(request, 'healthcheck/logout.html')
 
-def voting_view(request):
+def voting(request):
     return render(request, 'healthcheck/voting.html')
 
 

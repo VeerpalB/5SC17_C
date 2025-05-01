@@ -5,13 +5,15 @@
 
 <div class="button-container">
 
-    <a href="http://127.0.0.1:8000/session/">
-        <button >Start or continue session</button>
-    </a>
+    <form action="{% url 'session' %}">
+        <button type="submit">Start or continue session</button>
+    </form>
+    
 
-    <a href="http://127.0.0.1:8000/progress/">
-        <button >View progress</button>
+    <a href="{% url 'progress_name' %}">
+        <button type="button">View progress</button>
     </a>
+    
 
     
 

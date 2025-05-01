@@ -284,21 +284,6 @@
 </form>
 
 <script src="{% static 'healthcheck/voting.js' %}"></script>
-<script>
-document.querySelectorAll('.select-box').forEach(box => {
-  box.addEventListener('click', () => {
-    const group = box.getAttribute('data-group');
-    const value = box.getAttribute('data-value');
-    const parentTab = box.closest('.tab');
-    parentTab.querySelectorAll(`.select-box[data-group="${group}"]`).forEach(b => b.classList.remove('selected'));
-    box.classList.add('selected');
-    if (group === 'group1') {
-      parentTab.querySelector('.trend-input').value = value;
-    } else if (group === 'group2') {
-      parentTab.querySelector('.state-input').value = value;
-    }
-  });
-});
-</script>
+
 
 {% endblock %}
