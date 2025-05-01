@@ -107,7 +107,7 @@ def dashboard(request):
 def overview_home(request):
     return render(request, 'healthcheck/overviewhome.html')
 
-def forgotten_password(request):
+def forgotten_password(request): # Done by Veerpal
     if request.method == 'POST':
         email = request.POST.get('email')
         messages.success(request, f"An email has been sent to {email} with password reset instructions.")
@@ -115,24 +115,27 @@ def forgotten_password(request):
 
     return render(request, 'healthcheck/forgotten_password.html')
 
-def forgotten_password_confirmation(request):
+def forgotten_password_confirmation(request): # Done by Veerpal
     return render(request, 'healthcheck/forgotten_password_confirmation.html')
 
 def navbar(request):
     return render(request, 'healthcheck/navbar.html')
 
-def signup(request): 
+def signup(request):  # Done by Veerpal
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             
+
+
+            role = request.POST.get('role')
+            user_profile, created = UserProfile.objects.get_or_create(user=user)
+
             if created:
                 user_profile.role = role
                 user_profile.save()
-            # print("Accessing user.userprofile now will break if not yet created.")
-            role = request.POST.get('role')
-            user_profile = UserProfile.objects.create(user=user, role=role)
+            # user_profile = UserProfile.objects.create(user=user, role=role)
             # UserProfile.objects.create(user=user, role=role)
             # user.userprofile.role = form.cleaned_data['role']
             # UserProfile.objects.create(user=user, role=role)
@@ -141,6 +144,11 @@ def signup(request):
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}. You can now log in.')
             return redirect('login')
+        
+
+
+        else:
+            messages.error(request, "There was an error with your form. Please try again.")
             # user_profile = UserProfile.objects.create(
             #     user=user,
             #     role=form.cleaned_data['role']
@@ -171,7 +179,7 @@ def signup(request):
     return render(request, 'healthcheck/signup.html', {'form': form})
 
 
-def login(request):
+def login(request): # Done by Veerpal
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -190,24 +198,25 @@ def login(request):
 
             # Role-based redirection
 
-            if role in ['engineer', 'teamleader']:
+            if role == 'engineer':
                 return redirect('home')
-                
+            
+            elif role == 'teamleader':
+                return redirect('home')
+
             elif role == 'department_leader':
                 return redirect('overview_home')
-                
+
             elif role == 'seniormanager':
                 return redirect('welcome')
-                
+
             elif role == 'admin':
                 return redirect('dashboard')
-                
-            else:
-                return redirect('home')  # fallback
 
+            else:
+                return redirect('home')  
         else:
             messages.error(request, 'Invalid username or password.')
-
             
     return render(request, "healthcheck/login.html")
     

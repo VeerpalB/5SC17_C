@@ -22,10 +22,10 @@ class Item(models.Model):
         return self.name
 
 
-class UserProfile(models.Model):
+class UserProfile(models.Model): # Done by Veerpal
     
     
-    ROLE_CHOICES = [
+    ROLE_CHOICES = [ # Done by Veerpal
         ('teamleader', 'Team Leader'),
         ('engineer', 'Engineer'),
         ('admin', 'Admin'),
@@ -39,7 +39,7 @@ class UserProfile(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.role}"
 
-@receiver(post_save, sender=User)
+@receiver(post_save, sender=User) # Done by Veerpal
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance, role='engineer')
@@ -50,7 +50,7 @@ def create_user_profile(sender, instance, created, **kwargs):
       
 
 
-@receiver(post_save, sender=User)
+@receiver(post_save, sender=User) # Done by Veerpal
 def save_user_profile(sender, instance, **kwargs):
     # Save the user profile every time the user instance is saved
     instance.userprofile.save()
