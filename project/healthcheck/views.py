@@ -143,23 +143,23 @@ def signup(request):
             messages.success(request, f'Account created for {username}!')
 
             
-            # Role-based redirection
-            if role in ['teamleader', 'engineer']:
-                return redirect('user')
+    #         # Role-based redirection
+    #         if role in ['teamleader', 'engineer']:
+    #             return redirect('user')
             
-            elif role == 'admin':
-                return redirect('dashboard') 
+    #         elif role == 'admin':
+    #             return redirect('dashboard') 
 
-            elif role == 'department_leader':
-                return redirect('overviewhome') 
+    #         elif role == 'department_leader':
+    #             return redirect('overviewhome') 
 
-            elif role == 'seniormanager':
-                return redirect('welcome')  
+    #         elif role == 'seniormanager':
+    #             return redirect('welcome')  
 
-            else:
-                return redirect('home') 
+    #         else:
+    #             return redirect('home') 
 
-    else:
+     else:
         form = CustomUserCreationForm()
 
     
