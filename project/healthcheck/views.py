@@ -104,7 +104,7 @@ def session(request):
 def dashboard(request):
     return render(request, 'healthcheck/dashboard.html')
 
-def overview_home(request):
+def overviewhome(request):
     return render(request, 'healthcheck/overviewhome.html')
 
 def forgotten_password(request): # Done by Veerpal
