@@ -5,14 +5,14 @@ from . import views
 
 urlpatterns = [
     path('', views.login, name='root_redirect'),
-    path('user', views.home, name='home_name'),
-    path('profile/', views.profile, name='profile_name'),
-    path('progress/', views.progress_view, name='progress_name'),
-    path('help/', views.help, name='help_name'),
-    path('logout/', views.logout, name='logout_name'),
+    path('user/', views.home, name='home'),
+    path('profile/', views.profile, name='profile'),
+    path('progress/', views.progress_view, name='progress'),
+    path('help/', views.help, name='help'),
+    path('logout/', views.logout_view, name='logout'),
     path('voting/', views.voting_view, name='voting'),
 
-    path('session/', views.edit, name='sessions_name'),
+    path('session/', views.edit, name='session'),
 
 
     path('login/', views.login, name='login'),

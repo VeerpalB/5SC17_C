@@ -87,7 +87,7 @@ def profile(request):
 def help(request):
     return render(request, 'healthcheck/help.html')
 
-def logout(request):
+def logout_view(request):
     return render(request, 'healthcheck/logout.html')
 
 def voting_view(request):
