@@ -3,9 +3,15 @@ from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 
-# Create your models here.
+class Vote(models.Model):
+    category = models.CharField(max_length=100)
+    trend = models.CharField(max_length=100)
+    state = models.CharField(max_length=100)
+    note = models.TextField(blank=True, null=True)
+    submitted_at = models.DateTimeField(auto_now_add=True)
+    team = models.CharField(max_length=20)
 
-
+    
 class Item(models.Model):
     name = models.CharField(max_length=20)
     description = models.TextField(null=True, blank=True)
@@ -36,3 +42,7 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
         UserProfile.objects.create(user=instance)
     else:
         instance.userprofile.save()
+
+    def __str__(self):
+        return f"{self.category} - {self.trend} - {self.state}"
+

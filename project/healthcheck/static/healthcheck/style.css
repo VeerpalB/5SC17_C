@@ -353,3 +353,16 @@ button:hover {
     text-align: center;
     margin-top: 50px;
   }
+  
+  .charts-row {
+    display: flex;
+    justify-content: center;
+    gap: 40px; 
+    flex-wrap: wrap; 
+    margin-top: 20px;
+}
+
+.chart-wrapper {
+    width: 650px;
+    height: 400px;
+}
