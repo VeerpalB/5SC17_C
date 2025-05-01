@@ -144,7 +144,7 @@ def signup(request):
             # user_profile.role = role
             # user_profile.save()
 
-            # username = form.cleaned_data.get('username')
+            username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}. You can now log in.')
             return redirect('login')
 
