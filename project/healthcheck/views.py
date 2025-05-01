@@ -205,7 +205,7 @@ def login(request): # Done by Veerpal
                 return redirect('home')
 
             elif role == 'department_leader':
-                return redirect('overview_home')
+                return redirect('overview/home')
 
             elif role == 'seniormanager':
                 return redirect('welcome')
