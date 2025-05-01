@@ -1,40 +1,16 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
-
 from .forms import CustomUserCreationForm
-
-from django.contrib.auth.forms import CustomUserCreationForm
-
 from django.urls import reverse
 from django.contrib.auth import authenticate, login as auth_login
 from django.db.models import Count
 from django.contrib import messages
-
 from .models import UserProfile
 
 from django.shortcuts import render, redirect
 from .models import Vote
 from django.contrib import messages
 from django.utils import timezone
-
-def progress_view(request):
-    if request.method == 'POST':
-        categories = request.POST.getlist('category[]')
-        trends = request.POST.getlist('trend[]')
-        states = request.POST.getlist('state[]')
-        notes = request.POST.getlist('note[]')
-
-        for i in range(len(categories)):
-            Vote.objects.create(
-                category=categories[i],
-                trend=trends[i],
-                state=states[i],
-                note=notes[i]
-            )
-        messages.success(request, "Your votes were submitted successfully!")
-        return redirect('voting')  
-
-    return render(request, 'healthcheck/progress.html')
 
 def department_overview(request):
     trend_labels = ["Red", "Yellow", "Green"]
@@ -136,12 +112,6 @@ def dashboard(request):
 def overview_home(request):
     return render(request, 'healthcheck/overviewhome.html')
 
-
-
-
-def team_overview(request):
-    return render(request, 'healthcheck/team_overview.html')
-
 def forgotten_password(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -197,15 +167,7 @@ def signup(request):
     else:
         form = CustomUserCreationForm()
 
-            role = form.cleaned_data['role']
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}!')
-            return redirect('healthcheck_home')
-    else:
-        form = CustomUserCreationForm()
-
-
-    return render(request, 'healthcheck/signup.html', {'form': form})
+return render(request, 'healthcheck/signup.html', {'form': form})
 
 
 def login(request):
